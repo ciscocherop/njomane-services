@@ -6,8 +6,8 @@ export default function RoadsideService() {
       {/* Left yellow edge accent */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-32 bg-[#FFD400] rounded-r-full z-10" aria-hidden="true" />
 
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2">
+      <div className="max-w-7xl mx-auto lg:px-8">
+        <div className="grid lg:grid-cols-2 lg:rounded-2xl overflow-hidden">
 
           {/* ── Left — image fills full section height ── */}
           <div className="relative order-2 lg:order-1 min-h-[320px] lg:min-h-0">

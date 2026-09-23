@@ -11,9 +11,9 @@ const filterLabels: Record<TireTypeFilter, string> = {
   'All Position': 'All Position',
 };
 
-// Card width + gap used to calculate scroll distance
-const CARD_WIDTH = 280; // px — matches min-w below
-const CARD_GAP = 20;  // px — gap-5
+// Card width — fixed at 280px, CSS handles mobile sizing via min()
+const CARD_WIDTH = 280;
+const CARD_GAP = 20;
 const SCROLL_STEP = CARD_WIDTH + CARD_GAP;
 
 export default function Tires() {
@@ -107,9 +107,10 @@ export default function Tires() {
           </div>
         </div>
 
-        {/* ── Filter tabs ── */}
+        {/* ── Filter tabs — horizontal scroll on mobile ── */}
         <div
-          className="flex flex-wrap gap-2 mb-5 p-1 bg-zinc-900 border border-zinc-800 rounded-xl w-fit"
+          className="flex gap-2 mb-5 p-1 bg-zinc-900 border border-zinc-800 rounded-xl overflow-x-auto"
+          style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
           role="group"
           aria-label="Filter tires by type"
         >
@@ -121,7 +122,7 @@ export default function Tires() {
                 type="button"
                 onClick={() => setActiveFilter(type)}
                 aria-pressed={isActive}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${isActive
+                className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${isActive
                   ? 'bg-amber-500 text-zinc-950 shadow-md shadow-amber-500/25'
                   : 'text-zinc-400 hover:text-white hover:bg-zinc-800'
                   }`}
@@ -169,7 +170,10 @@ export default function Tires() {
               <li
                 key={tire.id}
                 className="flex-shrink-0 flex"
-                style={{ width: `${CARD_WIDTH}px`, scrollSnapAlign: 'start' }}
+                style={{
+                  width: 'min(280px, calc(100vw - 48px))',
+                  scrollSnapAlign: 'start',
+                }}
               >
                 <TireCard tire={tire} onAsk={handleAsk} />
               </li>

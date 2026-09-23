@@ -7,26 +7,26 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
           {/* ── Left — single strong image ── */}
-          <div className="relative">
-            {/* Yellow corner accent — top left */}
+          <div className="relative pb-6 sm:pb-0">
+            {/* Yellow corner accents — hidden on very small screens to avoid clipping */}
             <div
-              className="absolute -top-3 -left-3 w-16 h-16 border-t-2 border-l-2 border-[#FFD400]/50 rounded-tl-xl pointer-events-none z-10"
+              className="hidden sm:block absolute -top-3 -left-3 w-16 h-16 border-t-2 border-l-2 border-[#FFD400]/50 rounded-tl-xl pointer-events-none z-10"
               aria-hidden="true"
             />
-            {/* Yellow corner accent — bottom right */}
             <div
-              className="absolute -bottom-3 -right-3 w-16 h-16 border-b-2 border-r-2 border-[#FFD400]/50 rounded-br-xl pointer-events-none z-10"
+              className="hidden sm:block absolute -bottom-3 -right-3 w-16 h-16 border-b-2 border-r-2 border-[#FFD400]/50 rounded-br-xl pointer-events-none z-10"
               aria-hidden="true"
             />
 
-            <div className="rounded-2xl overflow-hidden border border-white/8">
+            <div className="relative rounded-2xl overflow-hidden border border-white/8">
               <img
                 src="/about_mecahnic.jpg"
                 alt="Professional mechanic working under a commercial vehicle at Njomane Services, Dallas TX"
                 className="w-full h-64 lg:h-[360px] object-cover object-center"
               />
               {/* Bottom overlay badge */}
-              <div className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
+              <div
+                className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
                 style={{ background: 'linear-gradient(to top, rgba(5,5,5,0.85), transparent)' }}
                 aria-hidden="true"
               />
@@ -41,15 +41,15 @@ export default function About() {
                   Truck Mechanic · Dallas, TX
                 </p>
               </div>
-            </div>
 
-            {/* Floating stat card */}
-            <div className="absolute -bottom-5 -right-3 lg:-right-6 bg-[#050505] border border-[#FFD400]/30 rounded-xl px-5 py-4 shadow-xl">
-              <p className="text-[#FFD400] font-black text-2xl leading-none"
-                style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
-                ALL MAKES
-              </p>
-              <p className="text-[#A3A3A3] text-xs mt-0.5 tracking-wide uppercase">&amp; Models</p>
+              {/* Stat card — inside image wrapper so it never overflows the section */}
+              <div className="absolute bottom-4 right-4 bg-[#050505]/95 border border-[#FFD400]/30 rounded-xl px-4 py-3 shadow-xl backdrop-blur-sm">
+                <p className="text-[#FFD400] font-black text-xl leading-none"
+                  style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
+                  ALL MAKES
+                </p>
+                <p className="text-[#A3A3A3] text-xs mt-0.5 tracking-wide uppercase">&amp; Models</p>
+              </div>
             </div>
           </div>
 

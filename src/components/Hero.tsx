@@ -42,7 +42,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen bg-zinc-950 flex items-center pt-[92px] overflow-hidden"
+      className="relative min-h-screen bg-zinc-950 flex items-center pt-[86px] overflow-hidden"
     >
       {/* ── Slideshow ── */}
       <div className="absolute inset-0" aria-hidden="true">
@@ -130,27 +130,30 @@ export default function Hero() {
             and on-site road service in Dallas, TX. We come to you.
           </p>
 
-          {/* ── Primary phone CTA ── */}
-          <a
-            href="tel:8573166799"
-            className="self-start flex items-center gap-3 bg-[#FFD400] hover:bg-yellow-300 text-zinc-950 font-black px-6 py-4 rounded-md transition-colors duration-200 group"
-            style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '1.15rem', letterSpacing: '0.05em' }}
-          >
-            <Phone size={20} className="group-hover:scale-110 transition-transform duration-200" aria-hidden="true" />
-            <span className="flex flex-col leading-tight">
-              <span className="text-xs font-bold tracking-widest uppercase opacity-75">Call For Emergency Dispatch</span>
-              <span className="text-xl">857-316-6799</span>
-            </span>
-          </a>
+          {/* ── CTA group ── */}
+          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            <a
+              href="tel:8573166799"
+              className="self-start flex items-center gap-3 bg-[#FFD400] hover:bg-yellow-300 text-zinc-950 font-black px-5 py-3.5 rounded-md transition-colors duration-200 group w-full sm:w-auto justify-center sm:justify-start"
+              style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '1.1rem', letterSpacing: '0.05em' }}
+            >
+              <Phone size={20} className="flex-shrink-0 group-hover:scale-110 transition-transform duration-200" aria-hidden="true" />
+              <span className="flex flex-col leading-tight">
+                <span className="text-xs font-bold tracking-widest uppercase opacity-75 hidden sm:block">Call For Emergency Dispatch</span>
+                <span className="text-xl">857-316-6799</span>
+              </span>
+            </a>
 
-          {/* ── Secondary CTA ── */}
-          <a
-            href="#contact"
-            className="self-start flex items-center gap-2 border border-zinc-600 hover:border-zinc-400 text-white hover:bg-white/6 font-semibold px-6 py-3.5 rounded-md transition-all duration-200 text-base"
-          >
-            Request Fleet Service Quote
-            <ArrowRight size={17} aria-hidden="true" />
-          </a>
+            {/* ── Secondary CTA ── */}
+            <a
+              href="#contact"
+              className="self-start flex items-center justify-center gap-2 border border-zinc-600 hover:border-zinc-400 text-white hover:bg-white/6 font-semibold px-5 py-3.5 rounded-md transition-all duration-200 text-base w-full sm:w-auto"
+            >
+              Request Fleet Service Quote
+              <ArrowRight size={17} aria-hidden="true" />
+            </a>
+
+          </div>
 
           {/* ── Trust strip ── */}
           <div className="flex flex-wrap items-center gap-4 pt-2 border-t border-zinc-800">
