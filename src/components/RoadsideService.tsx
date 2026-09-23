@@ -13,10 +13,10 @@ export default function RoadsideService() {
               {/* Tall portrait — spans both rows, so its height = landscape + square */}
               <figure className="relative row-span-2 rounded-2xl overflow-hidden border border-line-subtle">
                 <img
-                  src="/IMG-20260923-WA0019.jpg"
-                  alt="Stack of new drive tires loaded on the Njomane service pickup at a truck yard"
+                  src="/roadside_service3.jpg"
+                  alt="Mechanic kneeling beside a trailer axle, servicing the brake drum with wheels removed"
                   loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover object-center"
+                  className="absolute inset-0 w-full h-full object-cover object-[38%_center]"
                 />
                 <div className="absolute bottom-3 left-3 bg-zinc-950/90 border border-zinc-700 rounded-lg px-3.5 py-2 backdrop-blur-sm">
                   <p className="text-copy text-xs font-semibold uppercase tracking-wide">Mobile Service</p>
@@ -27,8 +27,8 @@ export default function RoadsideService() {
               {/* Landscape */}
               <figure className="relative aspect-[4/3] rounded-xl overflow-hidden border border-line-subtle">
                 <img
-                  src="/IMG-20260923-WA0018.jpg"
-                  alt="Service truck bed loaded with brake drums, air compressor and Hendrickson parts"
+                  src="/roadside_service2.jpg"
+                  alt="Mechanic tightening truck wheel lug nuts with a torque wrench on-site"
                   loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover object-center"
                 />
