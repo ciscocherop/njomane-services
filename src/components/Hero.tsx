@@ -29,9 +29,9 @@ export default function Hero() {
   return (
     <section
       id="home"
-      /* deep navy-slate — #0f172a */
+      /* --bg-base */
       className="relative min-h-[92vh] flex items-center pt-16 overflow-hidden"
-      style={{ backgroundColor: '#0f172a' }}
+      style={{ backgroundColor: 'var(--bg-base)' }}
     >
       {/* ── Slideshow ── */}
       <div className="absolute inset-0" aria-hidden="true">
@@ -55,12 +55,12 @@ export default function Hero() {
 
         {/* Deep gradient — very dark on left, shows image on right */}
         <div className="absolute inset-0" style={{
-          background: 'linear-gradient(105deg, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.80) 50%, rgba(15,23,42,0.45) 100%)',
+          background: 'linear-gradient(105deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.80) 50%, rgba(10,10,10,0.45) 100%)',
           zIndex: 2,
         }} />
         {/* Bottom fade into stats bar */}
         <div className="absolute bottom-0 left-0 right-0 h-56" style={{
-          background: 'linear-gradient(to bottom, transparent, #0f172a)',
+          background: 'linear-gradient(to bottom, transparent, var(--bg-base))',
           zIndex: 3,
         }} />
       </div>
@@ -101,7 +101,7 @@ export default function Hero() {
             {/* Primary — amber */}
             <a
               href="tel:+18573166799"
-              className="flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3.5 rounded-lg shadow-lg transition-colors duration-200 w-full sm:w-auto"
+              className="flex items-center justify-center gap-2 bg-accent hover:brightness-110 text-slate-950 font-bold px-6 py-3.5 rounded-lg shadow-lg transition-colors duration-200 w-full sm:w-auto"
               style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '1rem', letterSpacing: '0.05em' }}
             >
               <Phone size={16} aria-hidden="true" />

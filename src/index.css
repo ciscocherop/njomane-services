@@ -30,6 +30,68 @@
   --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
 }
 
+/* ── Tonal scale — black base, stepped surfaces ── */
+:root {
+  --bg-base: #0a0a0a;
+  --bg-section: #111113;
+  --bg-card: rgba(255, 255, 255, 0.05);        /* translucent so photo texture shows through */
+  --bg-card-hover: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --overlay: linear-gradient(180deg, rgba(20, 14, 10, 0.55), rgba(10, 8, 6, 0.88));
+  --text-body: #96969c;
+  /* Cards over photo backgrounds need a darker scrim so text stays readable */
+  --bg-card-scrim: rgba(10, 10, 10, 0.62);
+  --bg-card-scrim-hover: rgba(24, 24, 27, 0.72);
+  --accent: #F2B705;
+}
+
+/* Expose tokens as utilities: bg-surface-*, border-line-subtle, text-copy, bg-accent */
+@theme inline {
+  --color-surface-base: var(--bg-base);
+  --color-surface-section: var(--bg-section);
+  --color-surface-card: var(--bg-card);
+  --color-surface-card-hover: var(--bg-card-hover);
+  --color-surface-card-scrim: var(--bg-card-scrim);
+  --color-surface-card-scrim-hover: var(--bg-card-scrim-hover);
+  --color-line-subtle: var(--border-subtle);
+  --color-copy: var(--text-body);
+  --color-accent: var(--accent);
+}
+
+/* Full-bleed photo backgrounds: slightly desaturated image + warm dark overlay */
+.section-photo {
+  filter: saturate(0.65);
+}
+.section-overlay {
+  background: var(--overlay);
+}
+/* Extra darkening where --overlay is lightest (top), so grey body text keeps contrast */
+.section-scrim {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 55%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* ── Shared card-grid treatment (Services, Why Njomane, highlight bar, tire catalog) ──
+   Background stays per-context (bg-surface-card / bg-surface-card-scrim + their hover step). */
+.card-lift {
+  border: 1px solid var(--border-subtle);
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.icon-chip {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+.card-lift:hover .icon-chip {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-lift:hover { transform: none; }
+}
+
 /* ── Base reset ── */
 *,
 *::before,
@@ -43,8 +105,7 @@ html {
 
 body {
   margin: 0;
-  background-color: #1c1c22;
-  /* slightly lighter — less heavy black */
+  background-color: var(--bg-base);
   color: #d4d4d8;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;

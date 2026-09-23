@@ -12,9 +12,22 @@ const navLinks = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeHref, setActiveHref] = useState('#home');
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 50);
+
+      // Scroll-spy: the last nav section whose top has passed just below the navbar is current.
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+      let current = navLinks[0].href;
+      for (const { href } of navLinks) {
+        const el = document.querySelector(href);
+        if (el && el.getBoundingClientRect().top <= 120) current = href;
+      }
+      setActiveHref(atBottom ? navLinks[navLinks.length - 1].href : current);
+    };
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -27,9 +40,9 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? 'bg-zinc-950/96 backdrop-blur-sm shadow-lg shadow-black/60 border-b border-zinc-800'
-          : 'bg-zinc-950'
+      className={`fixed top-0 left-0 right-0 z-50 border-b border-line-subtle transition-all duration-300 ${scrolled
+          ? 'bg-[rgba(10,10,10,0.85)] backdrop-blur-[8px] shadow-[0_4px_20px_rgba(0,0,0,0.3)]'
+          : 'bg-surface-base'
         }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
@@ -53,23 +66,33 @@ export default function Navbar() {
 
           {/* Desktop nav links */}
           <ul className="hidden lg:flex items-center gap-1" role="list">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="px-3 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors duration-200 rounded-md hover:bg-white/5"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeHref === link.href;
+              return (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    aria-current={isActive ? 'location' : undefined}
+                    className={`relative block px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-md hover:bg-white/5 ${isActive ? 'text-white' : 'text-zinc-400 hover:text-white'}`}
+                  >
+                    {link.label}
+                    {/* Active indicator */}
+                    <span
+                      className={`absolute left-3 right-3 bottom-0.5 h-0.5 rounded-full bg-accent transition-opacity duration-200 ${isActive ? 'opacity-100' : 'opacity-0'}`}
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           {/* Desktop CTA — yellow reserved for this button */}
-          <div className="hidden lg:flex items-center">
+          <div className="hidden lg:flex items-center gap-5">
+            <span className="w-px h-6 bg-white/10" aria-hidden="true" />
             <a
               href="tel:+18573166799"
-              className="flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-zinc-950 font-black px-5 py-2.5 rounded-md transition-colors duration-200"
+              className="flex items-center gap-2 bg-accent hover:brightness-110 text-zinc-950 font-black px-5 py-2.5 rounded-md transition-colors duration-200"
               style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '0.95rem', letterSpacing: '0.05em' }}
             >
               <Phone size={14} aria-hidden="true" />
@@ -81,7 +104,7 @@ export default function Navbar() {
           <div className="lg:hidden flex items-center gap-2">
             <a
               href="tel:+18573166799"
-              className="flex items-center gap-1.5 bg-amber-400 text-zinc-950 font-black text-sm px-3 py-2 rounded-md"
+              className="flex items-center gap-1.5 bg-accent text-zinc-950 font-black text-sm px-3 py-2 rounded-md"
               aria-label="Call +1 857-316-6799"
             >
               <Phone size={13} aria-hidden="true" />
@@ -107,23 +130,28 @@ export default function Navbar() {
             }`}
           aria-hidden={!menuOpen}
         >
-          <ul className="flex flex-col py-2 border-t border-zinc-800" role="list">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="block px-4 py-3 text-sm text-zinc-400 hover:text-white hover:bg-white/5 transition-colors duration-200"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+          <ul className="flex flex-col py-2 border-t border-line-subtle" role="list">
+            {navLinks.map((link) => {
+              const isActive = activeHref === link.href;
+              return (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    aria-current={isActive ? 'location' : undefined}
+                    className={`flex items-center gap-2 px-4 py-3 text-sm hover:bg-white/5 transition-colors duration-200 ${isActive ? 'text-white' : 'text-zinc-400 hover:text-white'}`}
+                  >
+                    {link.label}
+                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true" />}
+                  </a>
+                </li>
+              );
+            })}
             <li className="px-4 pt-2 pb-4">
               <a
                 href="tel:+18573166799"
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-zinc-950 font-black text-sm px-4 py-3 rounded-md transition-colors duration-200"
+                className="flex items-center justify-center gap-2 bg-accent hover:brightness-110 text-zinc-950 font-black text-sm px-4 py-3 rounded-md transition-colors duration-200"
                 style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
               >
                 <Phone size={15} aria-hidden="true" />

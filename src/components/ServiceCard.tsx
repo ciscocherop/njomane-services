@@ -12,17 +12,17 @@ const iconMap: Record<string, React.ComponentType<LucideProps>> = {
 export default function ServiceCard({ service }: { service: Service }) {
   const Icon = iconMap[service.icon] ?? Gauge;
   return (
-    <article className="group h-full bg-zinc-900 border border-zinc-800 rounded-xl p-6 flex flex-col hover:border-zinc-600 hover:shadow-lg hover:shadow-black/30 transition-all duration-200">
+    <article className="card-lift group w-full h-full bg-surface-card rounded-xl p-6 flex flex-col hover:bg-surface-card-hover hover:shadow-lg hover:shadow-black/30">
       {/* Icon */}
-      <div className="w-fit mb-4 p-3 rounded-lg bg-zinc-800 group-hover:bg-zinc-700 transition-colors duration-200">
-        <Icon size={18} className="text-zinc-300" aria-hidden="true" />
+      <div className="w-fit mb-4 p-3 rounded-lg icon-chip">
+        <Icon size={18} className="text-accent" aria-hidden="true" />
       </div>
       {/* Title */}
       <h3 className="text-white font-semibold text-base leading-snug mb-2">
         {service.title}
       </h3>
       {/* Description */}
-      <p className="text-zinc-400 text-sm leading-relaxed flex-1">
+      <p className="text-copy text-sm leading-relaxed flex-1">
         {service.description}
       </p>
       {/* Footer link */}

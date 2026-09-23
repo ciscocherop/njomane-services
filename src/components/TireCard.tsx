@@ -3,22 +3,22 @@ import { type Tire } from '../data/tires';
 
 interface TireCardProps { tire: Tire; onAsk: (tire: Tire) => void; }
 
-// Position badge — light theme
+// Position badge
 const positionBadge: Record<string, string> = {
-  'Steer Axle': 'bg-slate-100 text-slate-700 border-slate-200',
-  'Drive Axle': 'bg-slate-100 text-slate-700 border-slate-200',
-  'Trailer Axle': 'bg-slate-100 text-slate-700 border-slate-200',
-  'All Position': 'bg-slate-100 text-slate-700 border-slate-200',
+  'Steer Axle': 'bg-zinc-950/70 text-zinc-200 border-white/10',
+  'Drive Axle': 'bg-zinc-950/70 text-zinc-200 border-white/10',
+  'Trailer Axle': 'bg-zinc-950/70 text-zinc-200 border-white/10',
+  'All Position': 'bg-zinc-950/70 text-zinc-200 border-white/10',
 };
 
 export default function TireCard({ tire, onAsk }: TireCardProps) {
-  const badge = positionBadge[tire.position] ?? 'bg-slate-100 text-slate-700 border-slate-200';
+  const badge = positionBadge[tire.position] ?? 'bg-zinc-950/70 text-zinc-200 border-white/10';
 
   return (
-    <article className="group bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col h-full shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200">
+    <article className="card-lift group bg-surface-card rounded-xl overflow-hidden flex flex-col h-full shadow-sm hover:shadow-md hover:bg-surface-card-hover">
 
       {/* Image — 4:3 */}
-      <div className="relative w-full aspect-[4/3] bg-slate-100 overflow-hidden">
+      <div className="relative w-full aspect-[4/3] bg-surface-section overflow-hidden">
         {tire.photo ? (
           <img
             src={tire.photo}
@@ -43,7 +43,7 @@ export default function TireCard({ tire, onAsk }: TireCardProps) {
         </span>
 
         {/* In Stock chip */}
-        <span className="absolute top-2.5 right-2.5 flex items-center gap-1 bg-white/90 border border-slate-200 text-slate-600 text-[10px] font-semibold rounded-full px-2.5 py-0.5">
+        <span className="absolute top-2.5 right-2.5 flex items-center gap-1 bg-zinc-950/70 border border-white/10 text-zinc-200 text-[10px] font-semibold rounded-full px-2.5 py-0.5">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" aria-hidden="true" />
           In Stock
         </span>
@@ -53,27 +53,27 @@ export default function TireCard({ tire, onAsk }: TireCardProps) {
       <div className="flex flex-col gap-2 p-4 flex-1">
         {/* Brand row */}
         <div className="flex items-center justify-between gap-2">
-          <span className="text-slate-500 text-xs font-bold uppercase tracking-widest">{tire.brand}</span>
-          {tire.model && <span className="text-slate-400 text-xs">{tire.model}</span>}
+          <span className="text-zinc-500 text-xs font-bold uppercase tracking-widest">{tire.brand}</span>
+          {tire.model && <span className="text-zinc-500 text-xs">{tire.model}</span>}
         </div>
 
         {/* Size — main title */}
-        <p className="text-slate-900 font-black text-2xl leading-none tracking-tight"
+        <p className="text-white font-black text-2xl leading-none tracking-tight"
           style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
           {tire.size}
         </p>
 
         {/* Type */}
-        <p className="text-slate-500 text-xs font-medium uppercase tracking-wide">{tire.type}</p>
+        <p className="text-zinc-500 text-xs font-medium uppercase tracking-wide">{tire.type}</p>
 
         {/* Description */}
-        <p className="text-slate-600 text-sm leading-relaxed flex-1">{tire.description}</p>
+        <p className="text-copy text-sm leading-relaxed flex-1">{tire.description}</p>
 
-        {/* CTA — amber */}
+        {/* CTA — accent */}
         <a
           href="tel:+18573166799"
           onClick={() => onAsk(tire)}
-          className="mt-2 flex items-center justify-center gap-2 w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm py-2.5 rounded-lg transition-colors duration-200"
+          className="mt-2 flex items-center justify-center gap-2 w-full bg-accent hover:brightness-110 text-zinc-950 font-semibold text-sm py-2.5 rounded-lg transition-colors duration-200"
           aria-label={`Call for pricing on ${tire.brand} ${tire.size}`}
         >
           <Phone size={13} aria-hidden="true" />
