@@ -58,7 +58,7 @@ export default function RoadsideService() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 pt-1">
               <a href="tel:+18573166799"
-                className="flex items-center justify-center gap-2 bg-[#FFD400] hover:bg-yellow-300 text-zinc-950 font-black px-6 py-3 rounded-md transition-colors duration-200"
+                className="flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-zinc-950 font-black px-6 py-3 rounded-md transition-colors duration-200"
                 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '0.95rem', letterSpacing: '0.05em' }}>
                 <Phone size={15} aria-hidden="true" />
                 Call Now
@@ -74,3 +74,4 @@ export default function RoadsideService() {
     </section>
   );
 }
+

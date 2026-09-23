@@ -1,4 +1,4 @@
-import { ExternalLink, Mail, MapPin, Phone, Send } from 'lucide-react';
+import { ExternalLink, Mail, Phone, Send } from 'lucide-react';
 import { useState } from 'react';
 
 interface FormData {
@@ -143,25 +143,33 @@ export default function Contact() {
               </a>
             </div>
 
-            {/* Location */}
-            <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-4 flex flex-col gap-3">
-              <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-lg bg-zinc-800 flex items-center justify-center flex-shrink-0">
-                  <MapPin size={16} className="text-zinc-400" aria-hidden="true" />
-                </div>
+            {/* Location + embedded map */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden flex flex-col gap-0">
+              {/* Google Maps iframe */}
+              <iframe
+                title="Njomane Services location map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.6!2d-96.6516!3d32.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e9f2a2a2a2a2b%3A0x0!2s10900+C+F+Hawn+Fwy%2C+Dallas%2C+TX+75217!5e0!3m2!1sen!2sus!4v1234567890"
+                width="100%"
+                height="160"
+                style={{ border: 0, display: 'block' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <div className="p-4 flex items-center justify-between gap-3">
                 <address className="not-italic">
                   <p className="text-white font-semibold text-sm">10900 C F Hawn Fwy</p>
                   <p className="text-zinc-500 text-xs">Dallas, TX 75217</p>
                 </address>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=10900+C+F+Hawn+Fwy,+Dallas,+TX+75217"
+                  target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors duration-200 flex-shrink-0"
+                >
+                  <ExternalLink size={11} aria-hidden="true" />
+                  Directions
+                </a>
               </div>
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=10900+C+F+Hawn+Fwy,+Dallas,+TX+75217"
-                target="_blank" rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-semibold text-xs px-4 py-2 rounded-lg transition-colors duration-200"
-              >
-                <ExternalLink size={12} aria-hidden="true" />
-                Get Directions
-              </a>
             </div>
           </div>
 
@@ -222,7 +230,7 @@ export default function Contact() {
                           Call dispatch now for fastest response.
                         </p>
                         <a href="tel:+18573166799"
-                          className="inline-flex items-center gap-1.5 mt-2 bg-[#FFD400] hover:bg-yellow-300 text-zinc-950 font-black text-sm px-4 py-2 rounded-lg transition-colors duration-200"
+                          className="inline-flex items-center gap-1.5 mt-2 bg-amber-400 hover:bg-amber-300 text-zinc-950 font-black text-sm px-4 py-2 rounded-lg transition-colors duration-200"
                           style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
                           <Phone size={13} aria-hidden="true" />
                           CALL +1 (857) 316-6799
@@ -319,7 +327,7 @@ export default function Contact() {
 
                   {/* Submit — yellow */}
                   <button type="submit"
-                    className="self-start flex items-center gap-2 bg-[#FFD400] hover:bg-yellow-300 text-zinc-950 font-black px-7 py-3 rounded-lg transition-colors duration-200"
+                    className="self-start flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-zinc-950 font-black px-7 py-3 rounded-lg transition-colors duration-200"
                     style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '0.95rem', letterSpacing: '0.05em' }}>
                     <Send size={15} aria-hidden="true" />
                     Send Dispatch Request

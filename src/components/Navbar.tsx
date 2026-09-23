@@ -69,7 +69,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center">
             <a
               href="tel:+18573166799"
-              className="flex items-center gap-2 bg-[#FFD400] hover:bg-yellow-300 text-zinc-950 font-black px-5 py-2.5 rounded-md transition-colors duration-200"
+              className="flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-zinc-950 font-black px-5 py-2.5 rounded-md transition-colors duration-200"
               style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '0.95rem', letterSpacing: '0.05em' }}
             >
               <Phone size={14} aria-hidden="true" />
@@ -81,7 +81,7 @@ export default function Navbar() {
           <div className="lg:hidden flex items-center gap-2">
             <a
               href="tel:+18573166799"
-              className="flex items-center gap-1.5 bg-[#FFD400] text-zinc-950 font-black text-sm px-3 py-2 rounded-md"
+              className="flex items-center gap-1.5 bg-amber-400 text-zinc-950 font-black text-sm px-3 py-2 rounded-md"
               aria-label="Call +1 857-316-6799"
             >
               <Phone size={13} aria-hidden="true" />
@@ -123,7 +123,7 @@ export default function Navbar() {
               <a
                 href="tel:+18573166799"
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center justify-center gap-2 bg-[#FFD400] hover:bg-yellow-300 text-zinc-950 font-black text-sm px-4 py-3 rounded-md transition-colors duration-200"
+                className="flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-zinc-950 font-black text-sm px-4 py-3 rounded-md transition-colors duration-200"
                 style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
               >
                 <Phone size={15} aria-hidden="true" />
@@ -137,3 +137,4 @@ export default function Navbar() {
     </header>
   );
 }
+

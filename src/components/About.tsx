@@ -2,7 +2,7 @@ import { ArrowRight, Phone } from 'lucide-react';
 
 export default function About() {
   return (
-    <section id="about" className="bg-slate-50 pt-10 pb-12 lg:pt-14 lg:pb-20">
+    <section id="about" className="bg-white pt-10 pb-12 lg:pt-14 lg:pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
@@ -88,7 +88,7 @@ export default function About() {
             <div className="flex flex-col sm:flex-row gap-3 pt-1">
               <a
                 href="tel:+18573166799"
-                className="inline-flex items-center justify-center gap-2 bg-[#FFD400] hover:bg-yellow-300 text-zinc-950 font-black px-6 py-3 rounded-md transition-colors duration-200"
+                className="inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-zinc-950 font-black px-6 py-3 rounded-md transition-colors duration-200"
                 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '0.95rem', letterSpacing: '0.05em' }}
               >
                 <Phone size={15} aria-hidden="true" />

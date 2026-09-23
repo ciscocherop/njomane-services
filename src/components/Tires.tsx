@@ -55,7 +55,7 @@ export default function Tires() {
   };
 
   return (
-    <section id="tires" className="bg-white py-10 lg:py-16">
+    <section id="tires" className="bg-slate-100 py-10 lg:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -106,8 +106,8 @@ export default function Tires() {
                 onClick={() => setActiveFilter(type)}
                 aria-pressed={isActive}
                 className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${isActive
-                    ? 'bg-slate-900 text-white shadow-sm'
-                    : 'bg-transparent text-slate-700 hover:bg-slate-200'
+                  ? 'bg-slate-900 text-white shadow-sm'
+                  : 'bg-transparent text-slate-700 hover:bg-slate-200'
                   }`}
               >
                 {filterLabels[type]}
@@ -159,14 +159,14 @@ export default function Tires() {
           {canScrollRight && (
             <div
               className="absolute right-0 top-0 bottom-3 w-12 pointer-events-none"
-              style={{ background: 'linear-gradient(to right, transparent, white)' }}
+              style={{ background: 'linear-gradient(to right, transparent, #f1f5f9)' }}
               aria-hidden="true"
             />
           )}
           {canScrollLeft && (
             <div
               className="absolute left-0 top-0 bottom-3 w-12 pointer-events-none"
-              style={{ background: 'linear-gradient(to left, transparent, white)' }}
+              style={{ background: 'linear-gradient(to left, transparent, #f1f5f9)' }}
               aria-hidden="true"
             />
           )}
@@ -180,8 +180,8 @@ export default function Tires() {
             disabled={!canScrollLeft}
             aria-label="Scroll left"
             className={`w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-sm transition-all duration-200 ${canScrollLeft
-                ? 'text-slate-600 hover:bg-slate-50 hover:border-slate-300'
-                : 'text-slate-300 cursor-not-allowed opacity-50'
+              ? 'text-slate-600 hover:bg-slate-50 hover:border-slate-300'
+              : 'text-slate-300 cursor-not-allowed opacity-50'
               }`}
           >
             <ChevronLeft size={16} aria-hidden="true" />
@@ -195,8 +195,8 @@ export default function Tires() {
             disabled={!canScrollRight}
             aria-label="Scroll right"
             className={`w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-sm transition-all duration-200 ${canScrollRight
-                ? 'text-slate-600 hover:bg-slate-50 hover:border-slate-300'
-                : 'text-slate-300 cursor-not-allowed opacity-50'
+              ? 'text-slate-600 hover:bg-slate-50 hover:border-slate-300'
+              : 'text-slate-300 cursor-not-allowed opacity-50'
               }`}
           >
             <ChevronRight size={16} aria-hidden="true" />
