@@ -3,7 +3,7 @@ import CheckList from './CheckList';
 
 export default function RoadsideService() {
   return (
-    <section id="roadside" className="bg-surface-base relative overflow-hidden">
+    <section id="roadside" className="relative overflow-hidden">
       <div className="max-w-7xl mx-auto lg:px-8">
         <div className="grid lg:grid-cols-2 lg:rounded-2xl overflow-hidden bg-surface-card">
 
@@ -84,7 +84,7 @@ export default function RoadsideService() {
             </a>
 
             {/* Service area map */}
-            <div className="rounded-xl overflow-hidden border border-line-subtle bg-surface-base">
+            <div className="rounded-xl overflow-hidden border border-line-subtle bg-black/30">
               <iframe
                 title="Njomane Services mobile service area — Dallas, TX"
                 src="https://maps.google.com/maps?q=10900+C+F+Hawn+Fwy,+Dallas,+TX+75217&z=10&output=embed"

@@ -12,6 +12,12 @@ const CARD_WIDTH = 280;
 const CARD_GAP = 20;
 const SCROLL_STEP = CARD_WIDTH + CARD_GAP;
 
+// Fade cards out at scrollable edges with a mask (not a colour overlay), so the page texture shows through.
+const edgeFadeMask = (left: boolean, right: boolean): React.CSSProperties => {
+  const mask = `linear-gradient(to right, ${left ? 'transparent 0, black 48px' : 'black 0'}, ${right ? 'black calc(100% - 48px), transparent 100%' : 'black 100%'})`;
+  return { maskImage: mask, WebkitMaskImage: mask };
+};
+
 export default function Tires() {
   const [activeFilter, setActiveFilter] = useState<TireTypeFilter>('All');
   const [selectedTire, setSelectedTire] = useState<Tire | null>(null);
@@ -55,7 +61,7 @@ export default function Tires() {
   };
 
   return (
-    <section id="tires" className="bg-surface-section py-10 lg:py-16">
+    <section id="tires" className="py-10 lg:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -137,7 +143,7 @@ export default function Tires() {
           <ul
             ref={trackRef}
             className="flex gap-5 overflow-x-auto pt-1 -mt-1 pb-3"
-            style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none', msOverflowStyle: 'none', ...edgeFadeMask(canScrollLeft, canScrollRight) }}
             onScroll={syncArrows}
             role="list"
             aria-label={`${filterLabels[activeFilter]} carousel`}
@@ -154,22 +160,6 @@ export default function Tires() {
               <li className="text-zinc-500 py-16 px-4">No tires found for this filter.</li>
             )}
           </ul>
-
-          {/* Edge fades — match section bg */}
-          {canScrollRight && (
-            <div
-              className="absolute right-0 top-0 bottom-3 w-12 pointer-events-none"
-              style={{ background: 'linear-gradient(to right, transparent, var(--bg-section))' }}
-              aria-hidden="true"
-            />
-          )}
-          {canScrollLeft && (
-            <div
-              className="absolute left-0 top-0 bottom-3 w-12 pointer-events-none"
-              style={{ background: 'linear-gradient(to left, transparent, var(--bg-section))' }}
-              aria-hidden="true"
-            />
-          )}
         </div>
 
         {/* Bottom nav */}

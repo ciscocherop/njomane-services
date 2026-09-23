@@ -100,14 +100,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative bg-surface-base py-16 lg:py-24 overflow-hidden">
-      {/* Subtle tools background */}
-      <div className="absolute inset-0" aria-hidden="true">
-        <img src="/contact_bg.jpg" alt="" className="section-photo w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 section-overlay" />
-        <div className="absolute inset-0 section-scrim" />
-      </div>
-
+    <section id="contact" className="relative py-16 lg:py-24 overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header — white, no yellow */}
@@ -125,7 +118,7 @@ export default function Contact() {
           <div className="lg:col-span-2 flex flex-col gap-4">
 
             {/* Dispatch card — dark sleek, green indicator */}
-            <div className="bg-surface-card-scrim backdrop-blur-sm border border-line-subtle rounded-2xl overflow-hidden hover:bg-surface-card-scrim-hover transition-colors duration-200">
+            <div className="bg-surface-card border border-line-subtle rounded-2xl overflow-hidden hover:bg-surface-card-hover transition-colors duration-200">
               {/* Header — dark with green status, no red */}
               <div className="px-5 py-4 flex items-center justify-between border-b border-line-subtle">
                 <div className="flex items-center gap-2.5">
@@ -161,7 +154,7 @@ export default function Contact() {
                   <p className="text-copy text-xs font-bold uppercase tracking-wider mb-2">Service Radius</p>
                   <div className="flex flex-wrap gap-1.5">
                     {SERVICE_AREAS.map((city) => (
-                      <span key={city} className="bg-zinc-800 border border-zinc-700 text-copy text-xs px-2.5 py-1 rounded-full">
+                      <span key={city} className="bg-white/5 border border-line-subtle text-copy text-xs px-2.5 py-1 rounded-full">
                         {city}
                       </span>
                     ))}
@@ -176,7 +169,7 @@ export default function Contact() {
                   <p className="text-copy text-xs font-bold uppercase tracking-wider mb-2">Payment Accepted</p>
                   <div className="flex flex-wrap gap-2">
                     {PAYMENT_METHODS.map((m) => (
-                      <span key={m} className="bg-zinc-800 border border-zinc-700 text-copy text-xs px-3 py-1.5 rounded-lg font-medium">
+                      <span key={m} className="bg-white/5 border border-line-subtle text-copy text-xs px-3 py-1.5 rounded-lg font-medium">
                         {m}
                       </span>
                     ))}
@@ -186,7 +179,7 @@ export default function Contact() {
             </div>
 
             {/* Email */}
-            <div className="bg-surface-card-scrim backdrop-blur-sm border border-line-subtle rounded-xl p-4 hover:bg-surface-card-scrim-hover transition-colors duration-200">
+            <div className="bg-surface-card border border-line-subtle rounded-xl p-4 hover:bg-surface-card-hover transition-colors duration-200">
               <a href="mailto:mmithongo@gmail.com" className="flex items-center gap-3 group" aria-label="Email us">
                 <div className="w-9 h-9 rounded-lg bg-accent/16 flex items-center justify-center flex-shrink-0">
                   <Mail size={16} className="text-accent" aria-hidden="true" />
@@ -201,7 +194,7 @@ export default function Contact() {
             </div>
 
             {/* Location + embedded map */}
-            <div className="bg-surface-card-scrim backdrop-blur-sm border border-line-subtle rounded-xl overflow-hidden flex flex-col gap-0 hover:bg-surface-card-scrim-hover transition-colors duration-200">
+            <div className="bg-surface-card border border-line-subtle rounded-xl overflow-hidden flex flex-col gap-0 hover:bg-surface-card-hover transition-colors duration-200">
               {/* Google Maps iframe */}
               <iframe
                 title="Njomane Services location map"
@@ -232,7 +225,7 @@ export default function Contact() {
 
           {/* ── RIGHT: Form ── */}
           <div className="lg:col-span-3">
-            <div className="bg-surface-card-scrim backdrop-blur-sm border border-line-subtle rounded-2xl p-6 lg:p-8 hover:bg-surface-card-scrim-hover transition-colors duration-200">
+            <div className="bg-surface-card border border-line-subtle rounded-2xl p-6 lg:p-8 hover:bg-surface-card-hover transition-colors duration-200">
               <h3 className="text-white font-bold text-lg mb-1">Request a Service Quote</h3>
               <p className="text-copy text-sm mb-6">Fill in your details and we'll get back to you.</p>
 
@@ -280,7 +273,7 @@ export default function Contact() {
 
                   {/* Emergency banner — no red, just direct CTA */}
                   {isBreakdown === 'yes' && (
-                    <div className="flex items-start gap-3 bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-4">
+                    <div className="flex items-start gap-3 bg-white/5 border border-line-subtle rounded-xl px-4 py-4">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 mt-1 flex-shrink-0 animate-pulse" aria-hidden="true" />
                       <div>
                         <p className="text-white font-bold text-sm">

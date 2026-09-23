@@ -11,14 +11,7 @@ const benefits = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative bg-surface-base py-16 lg:py-24 overflow-hidden">
-      {/* Fleet photo bg */}
-      <div className="absolute inset-0" aria-hidden="true">
-        <img src="/fleet_trucks.jpg" alt="" className="section-photo w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 section-overlay" />
-        <div className="absolute inset-0 section-scrim" />
-      </div>
-
+    <section className="relative py-16 lg:py-24 overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 

@@ -13,13 +13,8 @@ const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=10900+C+F+Hawn
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="relative bg-surface-base">
-      {/* Fade the section above (photo + overlay) into the footer's base black */}
-      <div
-        className="absolute left-0 right-0 bottom-full h-16 lg:h-[100px] pointer-events-none"
-        style={{ background: 'linear-gradient(180deg, transparent 0%, var(--bg-base) 100%)' }}
-        aria-hidden="true"
-      />
+    <footer className="relative border-t border-line-subtle">
+      {/* Transparent: sits on the shared page texture; the hairline marks where the footer starts */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
 

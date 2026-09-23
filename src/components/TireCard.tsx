@@ -18,7 +18,7 @@ export default function TireCard({ tire, onAsk }: TireCardProps) {
     <article className="card-lift group bg-surface-card rounded-xl overflow-hidden flex flex-col h-full shadow-sm hover:shadow-md hover:bg-surface-card-hover">
 
       {/* Image — 4:3 */}
-      <div className="relative w-full aspect-[4/3] bg-surface-section overflow-hidden">
+      <div className="relative w-full aspect-[4/3] bg-black/30 overflow-hidden">
         {tire.photo ? (
           <img
             src={tire.photo}

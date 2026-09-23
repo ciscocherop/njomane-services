@@ -4,14 +4,7 @@ import PhotoPanel from './PhotoPanel';
 
 export default function About() {
   return (
-    <section id="about" className="relative bg-surface-base pt-10 pb-12 lg:pt-14 lg:pb-20 overflow-hidden">
-      {/* Shop-floor photo bg */}
-      <div className="absolute inset-0" aria-hidden="true">
-        <img src="/IMG-20260921-WA0024.jpg" alt="" className="section-photo w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 section-overlay" />
-        <div className="absolute inset-0 section-scrim" />
-      </div>
-
+    <section id="about" className="relative pt-10 pb-12 lg:pt-14 lg:pb-20 overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 

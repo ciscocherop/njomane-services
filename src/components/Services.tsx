@@ -4,7 +4,7 @@ import ServiceCard from './ServiceCard';
 
 export default function Services() {
   return (
-    <section id="services" className="bg-surface-base py-16 lg:py-24">
+    <section id="services" className="py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}

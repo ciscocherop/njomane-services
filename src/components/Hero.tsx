@@ -9,6 +9,11 @@ const slides = [
 
 const SLIDE_DURATION = 8000;
 
+const HERO_FADE_MASK: React.CSSProperties = {
+  maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
+  WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
+};
+
 export default function Hero() {
   const [current, setCurrent] = useState(0);
   const [prev, setPrev] = useState<number | null>(null);
@@ -29,12 +34,10 @@ export default function Hero() {
   return (
     <section
       id="home"
-      /* --bg-base */
       className="relative min-h-[92vh] flex items-center pt-16 overflow-hidden"
-      style={{ backgroundColor: 'var(--bg-base)' }}
     >
-      {/* ── Slideshow ── */}
-      <div className="absolute inset-0" aria-hidden="true">
+      {/* ── Slideshow — masked at the bottom so it dissolves into the site-wide texture ── */}
+      <div className="absolute inset-0" aria-hidden="true" style={HERO_FADE_MASK}>
         {slides.map((slide, i) => {
           const isActive = i === current;
           const isPrev = i === prev;
@@ -57,11 +60,6 @@ export default function Hero() {
         <div className="absolute inset-0" style={{
           background: 'linear-gradient(105deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.80) 50%, rgba(10,10,10,0.45) 100%)',
           zIndex: 2,
-        }} />
-        {/* Bottom fade into stats bar */}
-        <div className="absolute bottom-0 left-0 right-0 h-56" style={{
-          background: 'linear-gradient(to bottom, transparent, var(--bg-base))',
-          zIndex: 3,
         }} />
       </div>
 
