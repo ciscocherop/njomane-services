@@ -6,7 +6,6 @@ import HighlightBar from './components/HighlightBar';
 import Navbar from './components/Navbar';
 import RoadsideService from './components/RoadsideService';
 import Services from './components/Services';
-import StatsBar from './components/StatsBar';
 import Tires from './components/Tires';
 import WhyChooseUs from './components/WhyChooseUs';
 
@@ -16,7 +15,6 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <StatsBar />
         <HighlightBar />
         <About />
         <Services />
