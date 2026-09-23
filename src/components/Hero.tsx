@@ -1,5 +1,6 @@
 import { ArrowRight, Phone } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { srcSetFor } from '../lib/responsiveImages';
 
 // Each slide: AVIF first, JPG/WebP fallback via <picture>. Same fit/position on every slide so framing stays consistent.
 const slides = [
@@ -39,8 +40,8 @@ export default function Hero() {
             className="absolute inset-0"
             style={{ opacity: i === current ? 1 : 0, transition: `opacity ${FADE_MS}ms ease-in-out`, zIndex: 1 }}
           >
-            <source srcSet={slide.avif} type="image/avif" />
-            <source srcSet={slide.fallback} type={slide.type} />
+            <source srcSet={srcSetFor(slide.avif) ?? slide.avif} sizes="100vw" type="image/avif" />
+            <source srcSet={srcSetFor(slide.fallback) ?? slide.fallback} sizes="100vw" type={slide.type} />
             <img
               src={slide.fallback}
               alt={slide.alt}
@@ -119,14 +120,16 @@ export default function Hero() {
         </div>
 
         {/* Slide dots */}
-        <div className="absolute bottom-8 left-4 sm:left-6 lg:left-8 flex gap-2" role="tablist" aria-label="Slides">
+        <div className="absolute bottom-5 left-2 sm:left-4 lg:left-6 flex" role="tablist" aria-label="Slides">
           {slides.map((_, i) => (
             <button key={i} type="button" role="tab"
               aria-selected={i === current} aria-label={`Slide ${i + 1}`}
               onClick={() => setCurrent(i)}
-              className={`h-1 rounded-full transition-all duration-500 ${i === current ? 'w-8 bg-white' : 'w-3 bg-white/25 hover:bg-white/45'
-                }`}
-            />
+              className="group/dot h-11 min-w-11 px-1 flex items-center justify-center"
+            >
+              {/* visual bar; the button around it is the 44px touch target */}
+              <span className={`block h-1 rounded-full transition-all duration-500 ${i === current ? 'w-8 bg-white' : 'w-3 bg-white/25 group-hover/dot:bg-white/45'}`} />
+            </button>
           ))}
         </div>
       </div>

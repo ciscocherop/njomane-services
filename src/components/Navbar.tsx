@@ -108,7 +108,7 @@ export default function Navbar() {
           <div className="lg:hidden flex items-center gap-2">
             <a
               href="tel:+18573166799"
-              className="flex items-center gap-1.5 bg-accent text-zinc-950 font-black text-sm px-3 py-2 rounded-md"
+              className="flex items-center gap-1.5 bg-accent text-zinc-950 font-black text-sm px-3.5 min-h-11 rounded-md"
               aria-label="Call +1 857-316-6799"
             >
               <Phone size={13} aria-hidden="true" />
@@ -116,7 +116,7 @@ export default function Navbar() {
             </a>
             <button
               type="button"
-              className="p-2 rounded-md text-zinc-400 hover:text-white hover:bg-white/5 transition-colors duration-200"
+              className="p-3 -mr-2 rounded-md text-zinc-400 hover:text-white hover:bg-white/5 transition-colors duration-200"
               onClick={() => setMenuOpen((o) => !o)}
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"

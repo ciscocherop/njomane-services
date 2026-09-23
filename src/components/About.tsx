@@ -17,7 +17,7 @@ export default function About() {
               subtitle="Truck Mechanic · Dallas, TX"
             >
               {/* Stat chip */}
-              <div className="absolute bottom-4 right-4 bg-zinc-950/90 border border-zinc-700 rounded-lg px-3 py-2 backdrop-blur-sm">
+              <div className="absolute top-4 sm:top-auto sm:bottom-4 right-4 bg-zinc-950/90 border border-zinc-700 rounded-lg px-3 py-2 backdrop-blur-sm">
                 <p className="text-white font-black text-base leading-none"
                   style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
                   ALL MAKES

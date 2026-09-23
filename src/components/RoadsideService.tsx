@@ -94,14 +94,14 @@ export default function RoadsideService() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-              <div className="px-4 py-2.5 flex items-center justify-between gap-3">
+              <div className="px-4 min-h-11 flex items-center justify-between gap-3">
                 <p className="text-copy text-xs">
                   <span className="text-white font-semibold">Base:</span> Dallas, TX · Serving all of DFW
                 </p>
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=10900+C+F+Hawn+Fwy,+Dallas,+TX+75217"
                   target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-zinc-500 hover:text-zinc-300 text-xs font-semibold transition-colors duration-200 flex-shrink-0"
+                  className="self-stretch min-h-11 pl-3 flex items-center gap-1 text-zinc-500 hover:text-zinc-300 text-xs font-semibold transition-colors duration-200 flex-shrink-0"
                 >
                   <MapPin size={12} aria-hidden="true" />
                   Directions

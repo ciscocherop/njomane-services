@@ -1,5 +1,6 @@
 import { Phone } from 'lucide-react';
 import { type Tire } from '../data/tires';
+import { srcSetFor } from '../lib/responsiveImages';
 
 interface TireCardProps { tire: Tire; onAsk: (tire: Tire) => void; }
 
@@ -22,6 +23,9 @@ export default function TireCard({ tire, onAsk }: TireCardProps) {
         {tire.photo ? (
           <img
             src={tire.photo}
+            srcSet={srcSetFor(tire.photo)}
+            sizes="280px"
+            loading="lazy"
             alt={`${tire.brand} ${tire.model} ${tire.size} tire`}
             className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
@@ -73,7 +77,7 @@ export default function TireCard({ tire, onAsk }: TireCardProps) {
         <a
           href="tel:+18573166799"
           onClick={() => onAsk(tire)}
-          className="mt-2 flex items-center justify-center gap-2 w-full bg-accent hover:brightness-110 text-zinc-950 font-semibold text-sm py-2.5 rounded-lg transition-colors duration-200"
+          className="mt-2 flex items-center justify-center gap-2 w-full bg-accent hover:brightness-110 text-zinc-950 font-semibold text-sm py-3 rounded-lg transition-colors duration-200"
           aria-label={`Call for pricing on ${tire.brand} ${tire.size}`}
         >
           <Phone size={13} aria-hidden="true" />

@@ -28,7 +28,7 @@ export default function ServiceCard({ service }: { service: Service }) {
       {/* Footer link */}
       <a
         href="#contact"
-        className="mt-5 inline-flex items-center gap-1 text-zinc-500 hover:text-zinc-300 font-medium text-xs tracking-wide transition-colors duration-200"
+        className="mt-5 -my-3.5 py-3.5 inline-flex items-center gap-1 text-zinc-500 hover:text-zinc-300 font-medium text-xs tracking-wide transition-colors duration-200"
         aria-label={`Inquire about ${service.title}`}
       >
         Inquire about this service <span aria-hidden="true">→</span>

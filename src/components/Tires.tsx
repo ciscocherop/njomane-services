@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { type Tire, tireTypes, type TireTypeFilter, tires } from '../data/tires';
+import { srcSetFor } from '../lib/responsiveImages';
 import TireCard from './TireCard';
 
 const filterLabels: Record<TireTypeFilter, string> = {
@@ -82,6 +83,9 @@ export default function Tires() {
         <div className="relative rounded-xl overflow-hidden mb-6 h-36 lg:h-44 border border-line-subtle shadow-sm">
           <img
             src="/IMG-20260921-WA0021.jpg"
+            srcSet={srcSetFor('/IMG-20260921-WA0021.jpg')}
+            sizes="(min-width: 1280px) 1216px, calc(100vw - 32px)"
+            loading="lazy"
             alt="Tire inventory at Njomane Services"
             className="w-full h-full object-cover object-center"
           />
@@ -111,7 +115,7 @@ export default function Tires() {
                 type="button"
                 onClick={() => setActiveFilter(type)}
                 aria-pressed={isActive}
-                className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${isActive
+                className={`flex-shrink-0 px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-200 ${isActive
                   ? 'bg-white/10 text-white shadow-sm'
                   : 'bg-transparent text-copy hover:bg-surface-card-hover hover:text-white'
                   }`}
@@ -169,7 +173,7 @@ export default function Tires() {
             onClick={() => scrollBy('left')}
             disabled={!canScrollLeft}
             aria-label="Scroll left"
-            className={`w-9 h-9 rounded-full bg-surface-card border border-line-subtle flex items-center justify-center shadow-sm transition-all duration-200 ${canScrollLeft
+            className={`w-11 h-11 rounded-full bg-surface-card border border-line-subtle flex items-center justify-center shadow-sm transition-all duration-200 ${canScrollLeft
               ? 'text-copy hover:bg-surface-card-hover hover:text-white'
               : 'text-zinc-600 cursor-not-allowed opacity-50'
               }`}
@@ -184,7 +188,7 @@ export default function Tires() {
             onClick={() => scrollBy('right')}
             disabled={!canScrollRight}
             aria-label="Scroll right"
-            className={`w-9 h-9 rounded-full bg-surface-card border border-line-subtle flex items-center justify-center shadow-sm transition-all duration-200 ${canScrollRight
+            className={`w-11 h-11 rounded-full bg-surface-card border border-line-subtle flex items-center justify-center shadow-sm transition-all duration-200 ${canScrollRight
               ? 'text-copy hover:bg-surface-card-hover hover:text-white'
               : 'text-zinc-600 cursor-not-allowed opacity-50'
               }`}

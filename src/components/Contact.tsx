@@ -27,7 +27,8 @@ const blockKeys = (blocked: RegExp) => (e: React.KeyboardEvent<HTMLInputElement>
   if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && e.key.replace(blocked, '') === '') e.preventDefault();
 };
 
-const inputBase = 'w-full bg-zinc-950 border rounded-lg px-3.5 py-2.5 text-sm text-white placeholder-zinc-600 outline-none transition-all duration-200';
+// text-base (16px) on phones: iOS Safari zooms into any field with smaller text
+const inputBase = 'w-full bg-zinc-950 border rounded-lg px-3.5 py-3 text-base sm:text-sm text-white placeholder-zinc-600 outline-none transition-all duration-200';
 const inputClass = (err: boolean) =>
   `${inputBase} ${err ? 'border-red-500/70' : 'border-zinc-700'} focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500/40`;
 
@@ -180,7 +181,7 @@ export default function Contact() {
 
             {/* Email */}
             <div className="bg-surface-card border border-line-subtle rounded-xl p-4 hover:bg-surface-card-hover transition-colors duration-200">
-              <a href="mailto:mmithongo@gmail.com" className="flex items-center gap-3 group" aria-label="Email us">
+              <a href="mailto:mmithongo@gmail.com" className="flex items-center gap-3 min-h-11 group" aria-label="Email us">
                 <div className="w-9 h-9 rounded-lg bg-accent/16 flex items-center justify-center flex-shrink-0">
                   <Mail size={16} className="text-accent" aria-hidden="true" />
                 </div>
@@ -214,7 +215,7 @@ export default function Contact() {
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=10900+C+F+Hawn+Fwy,+Dallas,+TX+75217"
                   target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors duration-200 flex-shrink-0"
+                  className="flex items-center gap-1.5 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white text-xs font-semibold px-3.5 min-h-11 rounded-lg transition-colors duration-200 flex-shrink-0"
                 >
                   <ExternalLink size={11} aria-hidden="true" />
                   Directions
@@ -258,7 +259,7 @@ export default function Contact() {
                         <button key={val} type="button" role="radio"
                           aria-checked={isBreakdown === val}
                           onClick={() => setIsBreakdown(val)}
-                          className={`flex-1 py-2.5 rounded-lg border text-sm font-bold uppercase tracking-wider transition-all duration-200 ${isBreakdown === val
+                          className={`flex-1 py-3 rounded-lg border text-sm font-bold uppercase tracking-wider transition-all duration-200 ${isBreakdown === val
                             ? val === 'yes'
                               ? 'bg-red-600/20 border-red-500 text-red-400'
                               : 'bg-zinc-800 border-zinc-600 text-white'
@@ -357,7 +358,7 @@ export default function Contact() {
                     </label>
                     <input id="location" name="location" type="text"
                       value={form.location} onChange={handleChange}
-                      placeholder="Address or area where service is needed"
+                      placeholder="Address or area needing service"
                       className={inputClass(false)} />
                   </div>
 

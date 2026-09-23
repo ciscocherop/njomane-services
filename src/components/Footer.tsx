@@ -16,10 +16,10 @@ export default function Footer() {
     <footer className="relative border-t border-line-subtle">
       {/* Transparent: sits on the shared page texture; the hairline marks where the footer starts */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6 lg:gap-10">
 
           {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1 flex flex-col gap-3">
+          <div className="col-span-2 lg:col-span-1 flex flex-col gap-3">
             <div>
               <p className="text-white font-bold text-lg tracking-wide"
                 style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.1em' }}>
@@ -37,11 +37,11 @@ export default function Footer() {
 
           {/* Navigation */}
           <nav aria-label="Footer navigation">
-            <p className="text-white font-semibold text-sm mb-3">Navigation</p>
-            <ul className="flex flex-col gap-1" role="list">
+            <p className="text-white font-semibold text-sm mb-1 lg:mb-3">Navigation</p>
+            <ul className="flex flex-col lg:gap-1" role="list">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-zinc-500 hover:text-white text-sm leading-[1.6] transition-colors duration-200">
+                  <a href={link.href} className="flex items-center min-h-11 lg:min-h-0 text-zinc-500 hover:text-white text-sm leading-[1.6] transition-colors duration-200">
                     {link.label}
                   </a>
                 </li>
@@ -51,38 +51,38 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <p className="text-white font-semibold text-sm mb-3">Services</p>
-            <ul className="flex flex-col gap-1" role="list">
+            <p className="text-white font-semibold text-sm mb-1 lg:mb-3">Services</p>
+            <ul className="flex flex-col lg:gap-1" role="list">
               {['Engine Diagnostics', 'Brake Service', 'Transmission Service', 'Tire Change & Repair', 'Electrical Diagnostics', 'Roadside Service'].map((s) => (
                 <li key={s}>
-                  <a href="#services" className="text-zinc-500 hover:text-white text-sm leading-[1.6] transition-colors duration-200">{s}</a>
+                  <a href="#services" className="flex items-center min-h-11 lg:min-h-0 text-zinc-500 hover:text-white text-sm leading-[1.6] transition-colors duration-200">{s}</a>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* Contact */}
-          <div>
-            <p className="text-white font-semibold text-sm mb-3">Contact</p>
-            <ul className="flex flex-col gap-2" role="list">
+          <div className="col-span-2 sm:col-span-1">
+            <p className="text-white font-semibold text-sm mb-1 lg:mb-3">Contact</p>
+            <ul className="flex flex-col lg:gap-2" role="list">
               <li>
                 <a href="tel:+18573166799"
-                  className="flex items-start gap-2 text-zinc-500 hover:text-white text-sm leading-[1.6] transition-colors duration-200">
-                  <Phone size={13} className="mt-0.5 flex-shrink-0 text-zinc-600" aria-hidden="true" />
+                  className="flex items-center lg:items-start gap-2 min-h-11 lg:min-h-0 text-zinc-500 hover:text-white text-sm leading-[1.6] transition-colors duration-200">
+                  <Phone size={13} className="lg:mt-0.5 flex-shrink-0 text-zinc-600" aria-hidden="true" />
                   +1 (857) 316-6799
                 </a>
               </li>
               <li>
                 <a href="mailto:mmithongo@gmail.com"
-                  className="flex items-start gap-2 text-zinc-500 hover:text-white text-sm leading-[1.6] transition-colors duration-200 break-all">
-                  <Mail size={13} className="mt-0.5 flex-shrink-0 text-zinc-600" aria-hidden="true" />
+                  className="flex items-center lg:items-start gap-2 min-h-11 lg:min-h-0 text-zinc-500 hover:text-white text-sm leading-[1.6] transition-colors duration-200 break-all">
+                  <Mail size={13} className="lg:mt-0.5 flex-shrink-0 text-zinc-600" aria-hidden="true" />
                   mmithongo@gmail.com
                 </a>
               </li>
               <li>
                 <a href={MAPS_URL} target="_blank" rel="noopener noreferrer"
-                  className="flex items-start gap-2 text-zinc-500 hover:text-white text-sm leading-[1.6] transition-colors duration-200">
-                  <MapPin size={13} className="mt-0.5 flex-shrink-0 text-zinc-600" aria-hidden="true" />
+                  className="flex items-center lg:items-start gap-2 min-h-11 lg:min-h-0 text-zinc-500 hover:text-white text-sm leading-[1.6] transition-colors duration-200">
+                  <MapPin size={13} className="lg:mt-0.5 flex-shrink-0 text-zinc-600" aria-hidden="true" />
                   <span>10900 C F Hawn Fwy<br />Dallas, TX 75217</span>
                 </a>
               </li>

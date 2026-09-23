@@ -54,15 +54,18 @@ export default function MobileCarousel({ children, gridClassName, label }: Mobil
       </ul>
 
       {/* Dots — mobile only */}
-      <div className="md:hidden mt-4 flex justify-center gap-1.5" aria-hidden="true">
+      <div className="md:hidden mt-1 flex justify-center" aria-hidden="true">
         {items.map((_, i) => (
           <button
             key={i}
             type="button"
             tabIndex={-1}
             onClick={() => goTo(i)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${i === active ? 'w-5 bg-white' : 'w-1.5 bg-zinc-600'}`}
-          />
+            className="h-11 w-11 min-w-0 shrink flex items-center justify-center"
+          >
+            {/* visual dot; the button is the touch target (44px, narrower only when many dots must fit) */}
+            <span className={`block h-1.5 rounded-full transition-all duration-300 ${i === active ? 'w-5 bg-white' : 'w-1.5 bg-zinc-600'}`} />
+          </button>
         ))}
       </div>
     </>

@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react';
+import { srcSetFor } from '../lib/responsiveImages';
 
 interface PhotoPanelProps {
   src: string;
@@ -13,7 +14,10 @@ interface PhotoPanelProps {
 export default function PhotoPanel({ src, alt, title, subtitle, children }: PhotoPanelProps) {
   return (
     <div className="relative rounded-2xl overflow-hidden border border-line-subtle shadow-lg shadow-black/40">
-      <img src={src} alt={alt} className="w-full h-64 lg:h-[380px] object-cover object-center" />
+      <img
+        src={src} alt={alt} srcSet={srcSetFor(src)} sizes="(min-width: 1024px) 600px, calc(100vw - 32px)"
+        loading="lazy" className="w-full h-64 lg:h-[380px] object-cover object-center"
+      />
       <div
         className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
         style={{ background: 'linear-gradient(to top, rgba(9,9,11,0.9), transparent)' }}
