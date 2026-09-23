@@ -1,13 +1,15 @@
 import { ArrowRight, Phone } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
+// Each slide: AVIF first, JPG/WebP fallback via <picture>. Same fit/position on every slide so framing stays consistent.
 const slides = [
-  { src: '/IMG-20260921-WA0040.jpg', alt: 'Truck axles being serviced on the shop floor' },
-  { src: '/IMG-20260921-WA0028.jpg', alt: 'Commercial truck components ready for service' },
-  { src: '/hero_mechanic.jpg', alt: 'Professional mechanic working on a truck engine' },
+  { avif: '/mechanic1.avif', fallback: '/mechanic1.jpg', type: 'image/jpeg', alt: 'Mechanic checking a trailer wheel in the shop' },
+  { avif: '/mechanic2.avif', fallback: '/mechanic2.jpg', type: 'image/jpeg', alt: 'Mechanic inspecting the rear of a semi truck chassis' },
+  { avif: '/mechanic3.avif', fallback: '/mechanic3.webp', type: 'image/webp', alt: 'Mechanic working under the open hood of a truck engine' },
 ];
 
-const SLIDE_DURATION = 8000;
+const DISPLAY_MS = 5000;   // time each image is fully shown
+const FADE_MS = 900;       // crossfade duration
 
 const HERO_FADE_MASK: React.CSSProperties = {
   maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
@@ -16,20 +18,12 @@ const HERO_FADE_MASK: React.CSSProperties = {
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
-  const [prev, setPrev] = useState<number | null>(null);
 
+  // Advance after fade + display time; re-armed on every change so a dot click restarts the timer.
   useEffect(() => {
-    const t = setInterval(() => {
-      setCurrent((c) => { const n = (c + 1) % slides.length; setPrev(c); return n; });
-    }, SLIDE_DURATION);
-    return () => clearInterval(t);
-  }, []);
-
-  useEffect(() => {
-    if (prev === null) return;
-    const t = setTimeout(() => setPrev(null), 2200);
+    const t = setTimeout(() => setCurrent((c) => (c + 1) % slides.length), DISPLAY_MS + FADE_MS);
     return () => clearTimeout(t);
-  }, [prev]);
+  }, [current]);
 
   return (
     <section
@@ -38,25 +32,28 @@ export default function Hero() {
     >
       {/* ── Slideshow — masked at the bottom so it dissolves into the site-wide texture ── */}
       <div className="absolute inset-0" aria-hidden="true" style={HERO_FADE_MASK}>
-        {slides.map((slide, i) => {
-          const isActive = i === current;
-          const isPrev = i === prev;
-          if (!isActive && !isPrev) return null;
-          return (
-            <div key={slide.src} className="absolute inset-0"
-              style={{ zIndex: isActive ? 1 : 0, opacity: isActive ? 1 : 0, transition: 'opacity 2s ease-in-out' }}>
-              <img src={slide.src} alt={slide.alt}
-                className="w-full h-full object-cover object-center"
-                style={{
-                  transform: isActive ? 'scale(1.04)' : 'scale(1)',
-                  transition: isActive ? `transform ${SLIDE_DURATION + 2000}ms ease-out` : 'transform 2s ease-in-out',
-                }}
-              />
-            </div>
-          );
-        })}
+        {/* All slides stay mounted and stacked; only opacity changes, so crossfades never flash blank */}
+        {slides.map((slide, i) => (
+          <picture
+            key={slide.avif}
+            className="absolute inset-0"
+            style={{ opacity: i === current ? 1 : 0, transition: `opacity ${FADE_MS}ms ease-in-out`, zIndex: 1 }}
+          >
+            <source srcSet={slide.avif} type="image/avif" />
+            <source srcSet={slide.fallback} type={slide.type} />
+            <img
+              src={slide.fallback}
+              alt={slide.alt}
+              className="w-full h-full object-cover object-center"
+              loading="eager"
+              decoding="async"
+              fetchPriority={i === 0 ? 'high' : 'low'}
+            />
+          </picture>
+        ))}
 
-        {/* Deep gradient — very dark on left, shows image on right */}
+        {/* Deep gradient — same overlay over every slide; very dark on left, shows image on right */}
+
         <div className="absolute inset-0" style={{
           background: 'linear-gradient(105deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.80) 50%, rgba(10,10,10,0.45) 100%)',
           zIndex: 2,
@@ -121,7 +118,7 @@ export default function Hero() {
           {slides.map((_, i) => (
             <button key={i} type="button" role="tab"
               aria-selected={i === current} aria-label={`Slide ${i + 1}`}
-              onClick={() => { setPrev(current); setCurrent(i); }}
+              onClick={() => setCurrent(i)}
               className={`h-1 rounded-full transition-all duration-500 ${i === current ? 'w-8 bg-white' : 'w-3 bg-white/25 hover:bg-white/45'
                 }`}
             />
