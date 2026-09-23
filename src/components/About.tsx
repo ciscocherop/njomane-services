@@ -2,98 +2,71 @@ import { ArrowRight, Phone } from 'lucide-react';
 
 export default function About() {
   return (
-    <section id="about" className="bg-[#111111] pt-10 pb-12 lg:pt-12 lg:pb-16">
+    <section id="about" className="bg-zinc-900 pt-10 pb-12 lg:pt-14 lg:pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-          {/* ── Left — single strong image ── */}
+          {/* Left — image */}
           <div className="relative pb-6 sm:pb-0">
-            {/* Yellow corner accents — hidden on very small screens to avoid clipping */}
-            <div
-              className="hidden sm:block absolute -top-3 -left-3 w-16 h-16 border-t-2 border-l-2 border-[#FFD400]/50 rounded-tl-xl pointer-events-none z-10"
-              aria-hidden="true"
-            />
-            <div
-              className="hidden sm:block absolute -bottom-3 -right-3 w-16 h-16 border-b-2 border-r-2 border-[#FFD400]/50 rounded-br-xl pointer-events-none z-10"
-              aria-hidden="true"
-            />
-
-            <div className="relative rounded-2xl overflow-hidden border border-white/8">
+            <div className="relative rounded-2xl overflow-hidden border border-zinc-800">
               <img
                 src="/about_mecahnic.jpg"
                 alt="Professional mechanic working under a commercial vehicle at Njomane Services, Dallas TX"
-                className="w-full h-64 lg:h-[360px] object-cover object-center"
+                className="w-full h-64 lg:h-[380px] object-cover object-center"
               />
-              {/* Bottom overlay badge */}
               <div
-                className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
-                style={{ background: 'linear-gradient(to top, rgba(5,5,5,0.85), transparent)' }}
+                className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+                style={{ background: 'linear-gradient(to top, rgba(9,9,11,0.9), transparent)' }}
                 aria-hidden="true"
               />
               <div className="absolute bottom-5 left-5">
-                <p
-                  className="text-white font-black text-lg uppercase leading-tight"
-                  style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
-                >
+                <p className="text-white font-black text-base uppercase leading-tight"
+                  style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
                   Njomane Services LLC
                 </p>
-                <p className="text-[#FFD400] text-xs font-semibold tracking-widest uppercase">
+                <p className="text-zinc-400 text-xs tracking-widest uppercase">
                   Truck Mechanic · Dallas, TX
                 </p>
               </div>
-
-              {/* Stat card — inside image wrapper so it never overflows the section */}
-              <div className="absolute bottom-4 right-4 bg-[#050505]/95 border border-[#FFD400]/30 rounded-xl px-4 py-3 shadow-xl backdrop-blur-sm">
-                <p className="text-[#FFD400] font-black text-xl leading-none"
+              {/* Stat chip — inside image, no overflow */}
+              <div className="absolute bottom-4 right-4 bg-zinc-950/95 border border-zinc-700 rounded-lg px-3 py-2 backdrop-blur-sm">
+                <p className="text-white font-black text-base leading-none"
                   style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
                   ALL MAKES
                 </p>
-                <p className="text-[#A3A3A3] text-xs mt-0.5 tracking-wide uppercase">&amp; Models</p>
+                <p className="text-zinc-500 text-xs mt-0.5 uppercase">&amp; Models</p>
               </div>
             </div>
           </div>
 
-          {/* ── Right — "Who We Are" content ── */}
+          {/* Right — content */}
           <div className="flex flex-col gap-4 lg:pl-4">
-
-            {/* Label + heading */}
             <div>
-              <span className="text-[#FFD400] text-xs font-semibold tracking-[0.2em] uppercase">
+              <span className="text-zinc-500 text-xs font-semibold tracking-[0.2em] uppercase">
                 Who We Are
               </span>
+              {/* Heading — all white, no yellow spans */}
               <h2 className="mt-2 text-4xl sm:text-5xl font-black text-white uppercase leading-none tracking-tight">
-                Your Mobile Truck{' '}
-                <span className="text-[#FFD400]">&amp; Trailer</span>{' '}
-                Mechanic
+                Your Mobile Truck &amp; Trailer Mechanic
               </h2>
-              <div className="mt-4 w-12 h-1 bg-[#FFD400] rounded-full" aria-hidden="true" />
+              <div className="mt-4 w-10 h-0.5 bg-zinc-600 rounded-full" aria-hidden="true" />
             </div>
 
-            {/* Body copy */}
-            <div className="flex flex-col gap-4 text-zinc-300 text-base leading-relaxed">
+            <div className="flex flex-col gap-3 text-zinc-300 text-sm leading-relaxed">
               <p>
-                Njomane Services LLC is a mobile truck and trailer mechanic
-                business based in Dallas, TX. We specialize in mechanical
-                repair, diagnostics, and tire services for commercial trucks
-                and trailers.
+                Njomane Services LLC is a mobile truck and trailer mechanic based in Dallas, TX,
+                specializing in mechanical repair, diagnostics, and tire services for commercial
+                trucks and trailers.
               </p>
               <p>
-                We bring the repairs directly to your location — on the side of
-                the road, at a yard, or at a job site. From engine diagnostics
-                and brake repairs to tire changes and electrical troubleshooting,
-                we handle all makes and models.
-              </p>
-              <p>
-                Our focus is simple: minimize your downtime and keep your fleet
-                on the road — with quality work and straightforward service.
+                We bring repairs to your location — on the roadside, at a yard, or a job site.
+                Engine diagnostics, brake repairs, tire changes, electrical troubleshooting — all
+                makes and models.
               </p>
             </div>
 
-            {/* Key services list */}
-            <ul
-              className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4"
-              role="list"
-            >
+            {/* Services list — slate bullets */}
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4" role="list">
               {[
                 'Engine Diagnostics & Repair',
                 'Brake Service & Repair',
@@ -104,14 +77,8 @@ export default function About() {
                 'Cooling System Service',
                 'Preventive Maintenance',
               ].map((item) => (
-                <li
-                  key={item}
-                  className="flex items-center gap-2.5 text-sm text-zinc-300"
-                >
-                  <span
-                    className="w-1.5 h-1.5 rounded-full bg-[#FFD400] flex-shrink-0"
-                    aria-hidden="true"
-                  />
+                <li key={item} className="flex items-center gap-2.5 text-sm text-zinc-400">
+                  <span className="w-1 h-1 rounded-full bg-zinc-500 flex-shrink-0" aria-hidden="true" />
                   {item}
                 </li>
               ))}
@@ -120,23 +87,22 @@ export default function About() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 pt-1">
               <a
-                href="tel:8573166799"
-                className="inline-flex items-center justify-center gap-2 bg-[#FFD400] hover:bg-yellow-300 text-[#050505] font-bold px-6 py-3 rounded-md transition-colors duration-200"
-                style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '1rem', letterSpacing: '0.05em' }}
+                href="tel:+18573166799"
+                className="inline-flex items-center justify-center gap-2 bg-[#FFD400] hover:bg-yellow-300 text-zinc-950 font-black px-6 py-3 rounded-md transition-colors duration-200"
+                style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '0.95rem', letterSpacing: '0.05em' }}
               >
-                <Phone size={16} aria-hidden="true" />
-                Call 857-316-6799
+                <Phone size={15} aria-hidden="true" />
+                +1 (857) 316-6799
               </a>
               <a
                 href="#services"
-                className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 text-white hover:bg-white/5 font-semibold px-6 py-3 rounded-md transition-colors duration-200 text-sm"
+                className="inline-flex items-center justify-center gap-2 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-semibold px-6 py-3 rounded-md transition-colors duration-200 text-sm"
               >
                 View All Services
-                <ArrowRight size={15} aria-hidden="true" />
+                <ArrowRight size={14} aria-hidden="true" />
               </a>
             </div>
           </div>
-
         </div>
       </div>
     </section>

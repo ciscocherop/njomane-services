@@ -8,25 +8,28 @@ const navLinks = [
   { label: 'Contact', href: '#contact' },
 ];
 
-const MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=10900+C+F+Hawn+Fwy,+Dallas,+TX+75217';
+const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=10900+C+F+Hawn+Fwy,+Dallas,+TX+75217';
 
 export default function Footer() {
   const year = new Date().getFullYear();
-
   return (
-    <footer className="bg-[#0a0a0a] border-t border-white/8">
+    <footer className="bg-zinc-950 border-t border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Brand column */}
-          <div className="sm:col-span-2 lg:col-span-1 flex flex-col gap-4">
+
+          {/* Brand */}
+          <div className="sm:col-span-2 lg:col-span-1 flex flex-col gap-3">
             <div>
-              <p className="text-white font-bold text-lg tracking-wide">NJOMANE</p>
-              <p className="text-[#FFD400] text-xs font-semibold tracking-[0.15em] uppercase">
+              <p className="text-white font-bold text-lg tracking-wide"
+                style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.1em' }}>
+                NJOMANE
+              </p>
+              {/* Subdued — not yellow */}
+              <p className="text-zinc-500 text-xs font-semibold tracking-[0.15em] uppercase">
                 Services LLC
               </p>
             </div>
-            <p className="text-[#A3A3A3] text-sm leading-relaxed">
+            <p className="text-zinc-500 text-sm leading-relaxed">
               Mobile truck and trailer mechanic serving Dallas, TX and surrounding areas.
             </p>
           </div>
@@ -37,10 +40,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-2" role="list">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-[#A3A3A3] hover:text-white text-sm transition-colors duration-200"
-                  >
+                  <a href={link.href} className="text-zinc-500 hover:text-white text-sm transition-colors duration-200">
                     {link.label}
                   </a>
                 </li>
@@ -52,21 +52,9 @@ export default function Footer() {
           <div>
             <p className="text-white font-semibold text-sm mb-4">Services</p>
             <ul className="flex flex-col gap-2" role="list">
-              {[
-                'Engine Diagnostics',
-                'Brake Service',
-                'Transmission Service',
-                'Tire Change & Repair',
-                'Electrical Diagnostics',
-                'Roadside Service',
-              ].map((s) => (
+              {['Engine Diagnostics', 'Brake Service', 'Transmission Service', 'Tire Change & Repair', 'Electrical Diagnostics', 'Roadside Service'].map((s) => (
                 <li key={s}>
-                  <a
-                    href="#services"
-                    className="text-[#A3A3A3] hover:text-white text-sm transition-colors duration-200"
-                  >
-                    {s}
-                  </a>
+                  <a href="#services" className="text-zinc-500 hover:text-white text-sm transition-colors duration-200">{s}</a>
                 </li>
               ))}
             </ul>
@@ -77,31 +65,23 @@ export default function Footer() {
             <p className="text-white font-semibold text-sm mb-4">Contact</p>
             <ul className="flex flex-col gap-3" role="list">
               <li>
-                <a
-                  href="tel:8573166799"
-                  className="flex items-start gap-2 text-[#A3A3A3] hover:text-white text-sm transition-colors duration-200"
-                >
-                  <Phone size={14} className="mt-0.5 flex-shrink-0 text-[#FFD400]" aria-hidden="true" />
-                  857-316-6799
+                <a href="tel:+18573166799"
+                  className="flex items-start gap-2 text-zinc-500 hover:text-white text-sm transition-colors duration-200">
+                  <Phone size={13} className="mt-0.5 flex-shrink-0 text-zinc-600" aria-hidden="true" />
+                  +1 (857) 316-6799
                 </a>
               </li>
               <li>
-                <a
-                  href="mailto:mmithongo@gmail.com"
-                  className="flex items-start gap-2 text-[#A3A3A3] hover:text-white text-sm transition-colors duration-200 break-all"
-                >
-                  <Mail size={14} className="mt-0.5 flex-shrink-0 text-[#0066FF]" aria-hidden="true" />
+                <a href="mailto:mmithongo@gmail.com"
+                  className="flex items-start gap-2 text-zinc-500 hover:text-white text-sm transition-colors duration-200 break-all">
+                  <Mail size={13} className="mt-0.5 flex-shrink-0 text-zinc-600" aria-hidden="true" />
                   mmithongo@gmail.com
                 </a>
               </li>
               <li>
-                <a
-                  href={MAPS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-2 text-[#A3A3A3] hover:text-white text-sm transition-colors duration-200"
-                >
-                  <MapPin size={14} className="mt-0.5 flex-shrink-0 text-[#FFD400]" aria-hidden="true" />
+                <a href={MAPS_URL} target="_blank" rel="noopener noreferrer"
+                  className="flex items-start gap-2 text-zinc-500 hover:text-white text-sm transition-colors duration-200">
+                  <MapPin size={13} className="mt-0.5 flex-shrink-0 text-zinc-600" aria-hidden="true" />
                   <span>10900 C F Hawn Fwy<br />Dallas, TX 75217</span>
                 </a>
               </li>
@@ -110,13 +90,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-10 pt-6 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[#A3A3A3] text-xs">
-            &copy; {year} Njomane Services LLC. All rights reserved.
-          </p>
-          <p className="text-[#A3A3A3]/40 text-xs">
-            Truck &amp; Trailer Mechanic · Dallas, TX
-          </p>
+        <div className="mt-10 pt-6 border-t border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-zinc-600 text-xs">&copy; {year} Njomane Services LLC. All rights reserved.</p>
+          <p className="text-zinc-700 text-xs">Truck &amp; Trailer Mechanic · Dallas, TX</p>
         </div>
       </div>
     </footer>
