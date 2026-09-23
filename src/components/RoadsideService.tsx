@@ -5,23 +5,49 @@ export default function RoadsideService() {
   return (
     <section id="roadside" className="bg-surface-base relative overflow-hidden">
       <div className="max-w-7xl mx-auto lg:px-8">
-        <div className="grid lg:grid-cols-2 lg:rounded-2xl overflow-hidden">
+        <div className="grid lg:grid-cols-2 lg:rounded-2xl overflow-hidden bg-surface-card">
 
-          {/* Image — fills full height */}
-          <div className="relative order-2 lg:order-1 min-h-[300px] lg:min-h-0">
-            <img
-              src="/onsite_road.jpg"
-              alt="Mobile service truck with tools open, mechanic working on a semi on the highway"
-              className="absolute inset-0 w-full h-full object-cover object-center"
-            />
-            <div className="absolute bottom-4 left-4 bg-zinc-950/90 border border-zinc-700 rounded-lg px-4 py-2.5 backdrop-blur-sm">
-              <p className="text-copy text-xs font-semibold uppercase tracking-wide">Mobile Service</p>
-              <p className="text-white font-bold text-sm">We Come To You</p>
+          {/* Masonry gallery — tall portrait | landscape over square */}
+          <div className="order-2 lg:order-1 p-4 sm:p-6 lg:p-8 lg:pr-0 lg:self-center">
+            <div className="grid grid-cols-2 gap-3">
+              {/* Tall portrait — spans both rows, so its height = landscape + square */}
+              <figure className="relative row-span-2 rounded-2xl overflow-hidden border border-line-subtle">
+                <img
+                  src="/IMG-20260923-WA0019.jpg"
+                  alt="Stack of new drive tires loaded on the Njomane service pickup at a truck yard"
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                />
+                <div className="absolute bottom-3 left-3 bg-zinc-950/90 border border-zinc-700 rounded-lg px-3.5 py-2 backdrop-blur-sm">
+                  <p className="text-copy text-xs font-semibold uppercase tracking-wide">Mobile Service</p>
+                  <p className="text-white font-bold text-sm">We Come To You</p>
+                </div>
+              </figure>
+
+              {/* Landscape */}
+              <figure className="relative aspect-[4/3] rounded-xl overflow-hidden border border-line-subtle">
+                <img
+                  src="/IMG-20260923-WA0018.jpg"
+                  alt="Service truck bed loaded with brake drums, air compressor and Hendrickson parts"
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                />
+              </figure>
+
+              {/* Square */}
+              <figure className="relative aspect-square rounded-xl overflow-hidden border border-line-subtle">
+                <img
+                  src="/onsite_road.jpg"
+                  alt="Mechanic working on a semi at the roadside from a mobile service truck"
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                />
+              </figure>
             </div>
           </div>
 
           {/* Content */}
-          <div className="order-1 lg:order-2 flex flex-col gap-5 px-6 py-10 lg:px-10 lg:py-16 bg-surface-card">
+          <div className="order-1 lg:order-2 flex flex-col gap-5 px-6 py-10 lg:px-10 lg:py-16">
             <div>
               <span className="text-zinc-500 text-xs font-semibold tracking-[0.18em] uppercase">
                 Mobile Mechanic
