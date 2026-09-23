@@ -1,4 +1,4 @@
-import { AlertTriangle, ExternalLink, Mail, MapPin, Phone, Send } from 'lucide-react';
+import { ExternalLink, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { useState } from 'react';
 
 interface FormData {
@@ -67,23 +67,24 @@ export default function Contact() {
           {/* ── LEFT: Dispatch + info ── */}
           <div className="lg:col-span-2 flex flex-col gap-4">
 
-            {/* Breakdown card */}
+            {/* Dispatch card — dark sleek, green indicator */}
             <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden">
-              <div className="bg-red-700 px-5 py-4 flex items-center gap-3">
-                <AlertTriangle size={18} className="text-white flex-shrink-0" aria-hidden="true" />
-                <div>
-                  <p className="text-white font-black text-sm uppercase tracking-wide"
-                    style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
-                    Immediate Breakdown?
+              {/* Header — dark with green status, no red */}
+              <div className="px-5 py-4 flex items-center justify-between border-b border-zinc-800">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" aria-hidden="true" />
+                  <p className="text-white font-bold text-sm"
+                    style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.04em', fontSize: '1rem' }}>
+                    Dispatchers On Duty
                   </p>
-                  <p className="text-red-200 text-xs">Call dispatch — we come to you</p>
                 </div>
+                <span className="text-emerald-400 text-xs font-semibold tracking-wide uppercase">Available</span>
               </div>
 
               <div className="px-5 py-5 flex flex-col gap-4">
-                {/* Phone — yellow CTA */}
+                {/* Phone */}
                 <a href="tel:+18573166799"
-                  className="flex items-center gap-3 group" aria-label="Call +1 857-316-6799">
+                  className="flex items-center gap-3 group" aria-label="Call dispatch">
                   <div className="w-11 h-11 rounded-lg bg-zinc-800 flex items-center justify-center flex-shrink-0 group-hover:bg-zinc-700 transition-colors">
                     <Phone size={18} className="text-zinc-300" aria-hidden="true" />
                   </div>
@@ -95,15 +96,6 @@ export default function Contact() {
                     </p>
                   </div>
                 </a>
-
-                {/* Status */}
-                <div className="flex items-start gap-3 p-3 bg-zinc-950 border border-zinc-800 rounded-lg">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 mt-1 flex-shrink-0 animate-pulse" aria-hidden="true" />
-                  <div>
-                    <p className="text-white text-sm font-semibold">Technicians Available</p>
-                    <p className="text-zinc-500 text-xs mt-0.5">Call for availability and dispatch times.</p>
-                  </div>
-                </div>
 
                 <div className="h-px bg-zinc-800" aria-hidden="true" />
 
@@ -221,15 +213,14 @@ export default function Contact() {
                     </div>
                   </fieldset>
 
-                  {/* Emergency banner */}
+                  {/* Emergency banner — no red, just direct CTA */}
                   {isBreakdown === 'yes' && (
-                    <div className="flex items-start gap-3 bg-red-900/20 border border-red-700/50 rounded-xl px-4 py-4">
-                      <AlertTriangle size={16} className="text-red-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                    <div className="flex items-start gap-3 bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-4">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 mt-1 flex-shrink-0 animate-pulse" aria-hidden="true" />
                       <div>
                         <p className="text-white font-bold text-sm">
-                          Call dispatch immediately for fastest response.
+                          Call dispatch now for fastest response.
                         </p>
-                        {/* Yellow — emergency CTA */}
                         <a href="tel:+18573166799"
                           className="inline-flex items-center gap-1.5 mt-2 bg-[#FFD400] hover:bg-yellow-300 text-zinc-950 font-black text-sm px-4 py-2 rounded-lg transition-colors duration-200"
                           style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
@@ -331,7 +322,7 @@ export default function Contact() {
                     className="self-start flex items-center gap-2 bg-[#FFD400] hover:bg-yellow-300 text-zinc-950 font-black px-7 py-3 rounded-lg transition-colors duration-200"
                     style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '0.95rem', letterSpacing: '0.05em' }}>
                     <Send size={15} aria-hidden="true" />
-                    Send Request
+                    Send Dispatch Request
                   </button>
                 </form>
               )}

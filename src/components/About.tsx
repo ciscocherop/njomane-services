@@ -52,34 +52,34 @@ export default function About() {
               <div className="mt-4 w-10 h-0.5 bg-slate-300 rounded-full" aria-hidden="true" />
             </div>
 
-            <div className="flex flex-col gap-3 text-slate-600 text-sm leading-relaxed">
-              <p>
-                Njomane Services LLC is a mobile truck and trailer mechanic based in Dallas, TX,
-                specializing in mechanical repair, diagnostics, and tire services for commercial
-                trucks and trailers.
-              </p>
-              <p>
-                We bring repairs to your location — on the roadside, at a yard, or a job site.
-                Engine diagnostics, brake repairs, tire changes, electrical troubleshooting — all
-                makes and models.
-              </p>
-            </div>
-
-            {/* Services list — slate bullets */}
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4" role="list">
+            {/* 3 scannable bullet points — replaces paragraphs + grid */}
+            <ul className="flex flex-col gap-4" role="list">
               {[
-                'Engine Diagnostics & Repair',
-                'Brake Service & Repair',
-                'Tire Change & Repair',
-                'Electrical Diagnostics',
-                'Suspension & Air Systems',
-                'On-Site & Road Service',
-                'Cooling System Service',
-                'Preventive Maintenance',
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2.5 text-sm text-slate-600">
-                  <span className="w-1 h-1 rounded-full bg-slate-400 flex-shrink-0" aria-hidden="true" />
-                  {item}
+                {
+                  title: 'We come to you.',
+                  body: 'On-site repairs at your location — roadside, yard or job site anywhere in DFW.',
+                },
+                {
+                  title: 'All makes & models.',
+                  body: 'Trucks, trailers, semis, box trucks, flatbeds and reefers — domestic and import.',
+                },
+                {
+                  title: 'Full-service mechanic.',
+                  body: 'Engine, brakes, transmission, tires, electrical, suspension and preventive maintenance.',
+                },
+              ].map(({ title, body }) => (
+                <li key={title} className="flex items-start gap-3">
+                  <span
+                    className="mt-0.5 w-5 h-5 rounded-full bg-slate-900 flex items-center justify-center flex-shrink-0"
+                    aria-hidden="true"
+                  >
+                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                      <path d="M1 4l2.5 2.5L9 1" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    <span className="font-semibold text-slate-900">{title}</span>{' '}{body}
+                  </p>
                 </li>
               ))}
             </ul>

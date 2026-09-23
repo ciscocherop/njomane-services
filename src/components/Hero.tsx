@@ -1,19 +1,10 @@
-import { ArrowRight, Phone, Shield, Star, Truck } from 'lucide-react';
+import { ArrowRight, Phone } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const slides = [
-  {
-    src: '/IMG-20260921-WA0040.jpg',
-    alt: 'Truck axles being serviced on the shop floor at Njomane Services',
-  },
-  {
-    src: '/IMG-20260921-WA0028.jpg',
-    alt: 'Commercial truck components and suspension parts ready for service',
-  },
-  {
-    src: '/hero_mechanic.jpg',
-    alt: 'Professional mechanic working on a commercial truck engine at Njomane Services',
-  },
+  { src: '/IMG-20260921-WA0040.jpg', alt: 'Truck axles being serviced on the shop floor' },
+  { src: '/IMG-20260921-WA0028.jpg', alt: 'Commercial truck components ready for service' },
+  { src: '/hero_mechanic.jpg', alt: 'Professional mechanic working on a truck engine' },
 ];
 
 const SLIDE_DURATION = 8000;
@@ -23,10 +14,10 @@ export default function Hero() {
   const [prev, setPrev] = useState<number | null>(null);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((c) => { const next = (c + 1) % slides.length; setPrev(c); return next; });
+    const t = setInterval(() => {
+      setCurrent((c) => { const n = (c + 1) % slides.length; setPrev(c); return n; });
     }, SLIDE_DURATION);
-    return () => clearInterval(timer);
+    return () => clearInterval(t);
   }, []);
 
   useEffect(() => {
@@ -38,9 +29,11 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen bg-zinc-950 flex items-center pt-16 overflow-hidden"
+      /* deep navy-slate — #0f172a */
+      className="relative min-h-[92vh] flex items-center pt-16 overflow-hidden"
+      style={{ backgroundColor: '#0f172a' }}
     >
-      {/* Slideshow */}
+      {/* ── Slideshow ── */}
       <div className="absolute inset-0" aria-hidden="true">
         {slides.map((slide, i) => {
           const isActive = i === current;
@@ -48,8 +41,7 @@ export default function Hero() {
           if (!isActive && !isPrev) return null;
           return (
             <div key={slide.src} className="absolute inset-0"
-              style={{ zIndex: isActive ? 1 : 0, opacity: isActive ? 1 : 0, transition: 'opacity 2s ease-in-out' }}
-            >
+              style={{ zIndex: isActive ? 1 : 0, opacity: isActive ? 1 : 0, transition: 'opacity 2s ease-in-out' }}>
               <img src={slide.src} alt={slide.alt}
                 className="w-full h-full object-cover object-center"
                 style={{
@@ -60,92 +52,74 @@ export default function Hero() {
             </div>
           );
         })}
-        {/* Overlay — left-heavy so text is always readable */}
-        <div className="absolute inset-0"
-          style={{ background: 'linear-gradient(105deg, rgba(9,9,11,0.92) 0%, rgba(9,9,11,0.70) 55%, rgba(9,9,11,0.40) 100%)', zIndex: 2 }}
-        />
-        <div className="absolute bottom-0 left-0 right-0 h-48"
-          style={{ background: 'linear-gradient(to bottom, transparent, #18181b)', zIndex: 3 }}
-        />
+
+        {/* Deep gradient — very dark on left, shows image on right */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(105deg, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.80) 50%, rgba(15,23,42,0.45) 100%)',
+          zIndex: 2,
+        }} />
+        {/* Bottom fade into stats bar */}
+        <div className="absolute bottom-0 left-0 right-0 h-56" style={{
+          background: 'linear-gradient(to bottom, transparent, #0f172a)',
+          zIndex: 3,
+        }} />
       </div>
 
-      {/* Content */}
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32" style={{ zIndex: 4 }}>
-        <div className="max-w-2xl flex flex-col gap-5">
+      {/* ── Content ── */}
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28" style={{ zIndex: 4 }}>
+        <div className="max-w-xl flex flex-col gap-5">
 
           {/* Status pill */}
-          <div className="inline-flex items-center self-start gap-2 bg-zinc-900/90 border border-zinc-700 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
+          <div className="inline-flex items-center self-start gap-2 bg-white/8 border border-white/15 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" aria-hidden="true" />
-            <span className="text-zinc-300 text-xs font-semibold tracking-wide">
-              Technicians Available · Dallas-Fort Worth Metro
+            <span className="text-slate-300 text-xs font-semibold tracking-wide">
+              Available Now · Dallas-Fort Worth Metro
             </span>
           </div>
 
           {/* Label */}
-          <span className="self-start text-zinc-400 text-xs font-semibold tracking-[0.18em] uppercase border border-zinc-700 px-3 py-1.5 rounded-full">
+          <span className="self-start text-slate-400 text-xs font-semibold tracking-[0.18em] uppercase">
             Mobile Truck &amp; Trailer Mechanic
           </span>
 
-          {/* Heading — all white, no yellow */}
+          {/* Heading — clean, no color splits */}
           <h1
-            className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-none tracking-tight uppercase"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight"
             style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
           >
-            Keeping Your Fleet On The Road.
+            Keeping Your Fleet<br />On The Road.
           </h1>
 
-          {/* Tagline */}
-          <p className="text-zinc-400 text-sm font-semibold tracking-[0.2em] uppercase">
-            Fast · Reliable · Professional
+          {/* Subhead */}
+          <p className="text-slate-300 text-base leading-relaxed max-w-md">
+            Truck and trailer repair, tire services, diagnostics and on-site road service
+            across DFW. We come to you.
           </p>
 
-          {/* Supporting copy */}
-          <p className="text-zinc-300 text-base leading-relaxed max-w-lg">
-            Truck and trailer repair, tire services, diagnostics and on-site road service in Dallas, TX. We come to you.
-          </p>
-
-          {/* CTA group */}
-          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-            {/* Primary — yellow reserved here */}
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-3 pt-1">
+            {/* Primary — amber */}
             <a
               href="tel:+18573166799"
-              className="flex items-center justify-center gap-2 bg-[#FFD400] hover:bg-yellow-300 text-zinc-950 font-black px-6 py-3.5 rounded-md transition-colors duration-200 w-full sm:w-auto"
+              className="flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3.5 rounded-lg shadow-lg transition-colors duration-200 w-full sm:w-auto"
               style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '1rem', letterSpacing: '0.05em' }}
             >
-              <Phone size={17} aria-hidden="true" />
+              <Phone size={16} aria-hidden="true" />
               +1 (857) 316-6799
             </a>
-            {/* Secondary — neutral outlined */}
+            {/* Secondary — ghost white */}
             <a
               href="#contact"
-              className="flex items-center justify-center gap-2 border border-zinc-600 hover:border-zinc-400 text-zinc-300 hover:text-white hover:bg-white/5 font-semibold px-6 py-3.5 rounded-md transition-all duration-200 text-sm w-full sm:w-auto"
+              className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-lg transition-all duration-200 text-sm w-full sm:w-auto"
             >
               Request Service Quote
               <ArrowRight size={15} aria-hidden="true" />
             </a>
           </div>
-
-          {/* Trust strip — slate icons */}
-          <div className="flex flex-wrap items-center gap-4 pt-2 border-t border-zinc-800">
-            <div className="flex items-center gap-2">
-              <Truck size={14} className="text-zinc-500" aria-hidden="true" />
-              <span className="text-zinc-400 text-xs">All Makes &amp; Models</span>
-            </div>
-            <div className="w-px h-4 bg-zinc-800" aria-hidden="true" />
-            <div className="flex items-center gap-2">
-              <Shield size={14} className="text-zinc-500" aria-hidden="true" />
-              <span className="text-zinc-400 text-xs">On-Site &amp; Road Service</span>
-            </div>
-            <div className="w-px h-4 bg-zinc-800" aria-hidden="true" />
-            <div className="flex items-center gap-2">
-              <Star size={14} className="text-zinc-500" aria-hidden="true" />
-              <span className="text-zinc-400 text-xs">Trusted by DFW Fleet Operators</span>
-            </div>
-          </div>
         </div>
 
         {/* Slide dots */}
-        <div className="absolute bottom-10 left-4 sm:left-6 lg:left-8 flex gap-2" role="tablist" aria-label="Slides">
+        <div className="absolute bottom-8 left-4 sm:left-6 lg:left-8 flex gap-2" role="tablist" aria-label="Slides">
           {slides.map((_, i) => (
             <button key={i} type="button" role="tab"
               aria-selected={i === current} aria-label={`Slide ${i + 1}`}

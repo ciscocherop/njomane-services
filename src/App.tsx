@@ -6,11 +6,9 @@ import HighlightBar from './components/HighlightBar';
 import Navbar from './components/Navbar';
 import RoadsideService from './components/RoadsideService';
 import Services from './components/Services';
+import StatsBar from './components/StatsBar';
 import Tires from './components/Tires';
 import WhyChooseUs from './components/WhyChooseUs';
-
-// Mobile bottom emergency call bar — REMOVED per design refresh
-// Users can tap Call in the navbar instead
 
 export default function App() {
   return (
@@ -18,6 +16,7 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
+        <StatsBar />
         <HighlightBar />
         <About />
         <Services />
