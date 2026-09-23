@@ -1,5 +1,6 @@
 import { Menu, Phone, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import LogoMark from './LogoMark';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -49,7 +50,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo — white text, no yellow */}
-          <a href="#home" className="flex flex-col leading-none group" aria-label="Njomane Services — home">
+          <a href="#home" className="flex items-center gap-2.5 group" aria-label="Njomane Services — home">
+            <LogoMark size={34} className="flex-shrink-0 transition-transform duration-500 group-hover:rotate-45" />
+            <span className="flex flex-col leading-none">
             <span
               className="text-white font-black text-lg tracking-widest uppercase group-hover:text-zinc-300 transition-colors duration-200"
               style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.12em' }}
@@ -61,6 +64,7 @@ export default function Navbar() {
               style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
             >
               Services LLC
+            </span>
             </span>
           </a>
 
