@@ -2,13 +2,13 @@ import { ArrowRight, Phone } from 'lucide-react';
 
 export default function About() {
   return (
-    <section id="about" className="bg-zinc-900 pt-10 pb-12 lg:pt-14 lg:pb-20">
+    <section id="about" className="bg-slate-50 pt-10 pb-12 lg:pt-14 lg:pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
           {/* Left — image */}
           <div className="relative pb-6 sm:pb-0">
-            <div className="relative rounded-2xl overflow-hidden border border-zinc-800">
+            <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
               <img
                 src="/about_mecahnic.jpg"
                 alt="Professional mechanic working under a commercial vehicle at Njomane Services, Dallas TX"
@@ -24,17 +24,17 @@ export default function About() {
                   style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
                   Njomane Services LLC
                 </p>
-                <p className="text-zinc-400 text-xs tracking-widest uppercase">
+                <p className="text-slate-300 text-xs tracking-widest uppercase">
                   Truck Mechanic · Dallas, TX
                 </p>
               </div>
-              {/* Stat chip — inside image, no overflow */}
-              <div className="absolute bottom-4 right-4 bg-zinc-950/95 border border-zinc-700 rounded-lg px-3 py-2 backdrop-blur-sm">
-                <p className="text-white font-black text-base leading-none"
+              {/* Stat chip */}
+              <div className="absolute bottom-4 right-4 bg-white/95 border border-slate-200 rounded-lg px-3 py-2 shadow-sm">
+                <p className="text-slate-900 font-black text-base leading-none"
                   style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
                   ALL MAKES
                 </p>
-                <p className="text-zinc-500 text-xs mt-0.5 uppercase">&amp; Models</p>
+                <p className="text-slate-500 text-xs mt-0.5 uppercase">&amp; Models</p>
               </div>
             </div>
           </div>
@@ -42,17 +42,17 @@ export default function About() {
           {/* Right — content */}
           <div className="flex flex-col gap-4 lg:pl-4">
             <div>
-              <span className="text-zinc-500 text-xs font-semibold tracking-[0.2em] uppercase">
+              <span className="text-slate-500 text-xs font-semibold tracking-[0.2em] uppercase">
                 Who We Are
               </span>
-              {/* Heading — all white, no yellow spans */}
-              <h2 className="mt-2 text-4xl sm:text-5xl font-black text-white uppercase leading-none tracking-tight">
+              {/* Heading — slate-900 on light bg */}
+              <h2 className="mt-2 text-4xl sm:text-5xl font-black text-slate-900 uppercase leading-none tracking-tight">
                 Your Mobile Truck &amp; Trailer Mechanic
               </h2>
-              <div className="mt-4 w-10 h-0.5 bg-zinc-600 rounded-full" aria-hidden="true" />
+              <div className="mt-4 w-10 h-0.5 bg-slate-300 rounded-full" aria-hidden="true" />
             </div>
 
-            <div className="flex flex-col gap-3 text-zinc-300 text-sm leading-relaxed">
+            <div className="flex flex-col gap-3 text-slate-600 text-sm leading-relaxed">
               <p>
                 Njomane Services LLC is a mobile truck and trailer mechanic based in Dallas, TX,
                 specializing in mechanical repair, diagnostics, and tire services for commercial
@@ -77,8 +77,8 @@ export default function About() {
                 'Cooling System Service',
                 'Preventive Maintenance',
               ].map((item) => (
-                <li key={item} className="flex items-center gap-2.5 text-sm text-zinc-400">
-                  <span className="w-1 h-1 rounded-full bg-zinc-500 flex-shrink-0" aria-hidden="true" />
+                <li key={item} className="flex items-center gap-2.5 text-sm text-slate-600">
+                  <span className="w-1 h-1 rounded-full bg-slate-400 flex-shrink-0" aria-hidden="true" />
                   {item}
                 </li>
               ))}
@@ -96,7 +96,7 @@ export default function About() {
               </a>
               <a
                 href="#services"
-                className="inline-flex items-center justify-center gap-2 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-semibold px-6 py-3 rounded-md transition-colors duration-200 text-sm"
+                className="inline-flex items-center justify-center gap-2 border border-slate-300 hover:border-slate-400 text-slate-700 hover:text-slate-900 font-semibold px-6 py-3 rounded-md transition-colors duration-200 text-sm"
               >
                 View All Services
                 <ArrowRight size={14} aria-hidden="true" />
