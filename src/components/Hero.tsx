@@ -45,6 +45,7 @@ export default function Hero() {
               src={slide.fallback}
               alt={slide.alt}
               className="w-full h-full object-cover object-center"
+              style={{ filter: 'brightness(1.1) contrast(1.05)' }}
               loading="eager"
               decoding="async"
               fetchPriority={i === 0 ? 'high' : 'low'}
@@ -52,10 +53,14 @@ export default function Hero() {
           </picture>
         ))}
 
-        {/* Deep gradient — same overlay over every slide; very dark on left, shows image on right */}
-
+        {/* Hero-only overlay — light at the top so the photo reads clearly, heavier toward the bottom,
+            plus a soft patch behind the copy. Legibility comes mainly from that + the text-shadow. */}
         <div className="absolute inset-0" style={{
-          background: 'linear-gradient(105deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.80) 50%, rgba(10,10,10,0.45) 100%)',
+          background: [
+            // soft local scrim behind the left-centred copy only — rest of the photo stays bright
+            'radial-gradient(ellipse 55% 50% at 22% 55%, rgba(10,10,10,0.4), transparent 75%)',
+            'linear-gradient(180deg, rgba(10,10,10,0.25) 0%, rgba(10,10,10,0.45) 50%, rgba(10,10,10,0.75) 100%)',
+          ].join(', '),
           zIndex: 2,
         }} />
       </div>
@@ -67,26 +72,26 @@ export default function Hero() {
           {/* Status pill */}
           <div className="inline-flex items-center self-start gap-2 bg-white/8 border border-white/15 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" aria-hidden="true" />
-            <span className="text-slate-300 text-xs font-semibold tracking-wide">
+            <span className="text-slate-300 text-xs font-semibold tracking-wide [text-shadow:0_2px_12px_rgba(0,0,0,0.6)]">
               Available Now · Dallas-Fort Worth Metro
             </span>
           </div>
 
           {/* Label */}
-          <span className="self-start text-slate-400 text-xs font-semibold tracking-[0.18em] uppercase">
+          <span className="self-start text-slate-300 text-xs font-semibold tracking-[0.18em] uppercase [text-shadow:0_2px_12px_rgba(0,0,0,0.6)]">
             Mobile Truck &amp; Trailer Mechanic
           </span>
 
           {/* Heading — clean, no color splits */}
           <h1
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight [text-shadow:0_2px_12px_rgba(0,0,0,0.6)]"
             style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
           >
             Keeping Your Fleet<br />On The Road.
           </h1>
 
           {/* Subhead */}
-          <p className="text-slate-300 text-base leading-relaxed max-w-md">
+          <p className="text-slate-200 text-base leading-relaxed max-w-md [text-shadow:0_2px_12px_rgba(0,0,0,0.6)]">
             Truck and trailer repair, tire services, diagnostics and on-site road service
             across DFW. We come to you.
           </p>
