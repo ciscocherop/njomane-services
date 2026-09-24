@@ -46,13 +46,12 @@ export default function RoadsideService() {
             </div>
           </div>
 
-          {/* Content */}
+          {/* Content — order-1 ensures it shows ABOVE the gallery on mobile */}
           <div className="order-1 lg:order-2 flex flex-col gap-5 px-6 py-10 lg:px-10 lg:py-16">
             <div>
               <span className="text-zinc-500 text-xs font-semibold tracking-[0.18em] uppercase">
                 Mobile Mechanic
               </span>
-              {/* Heading — all white */}
               <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight">
                 On-Site &amp; Road Service Available
               </h2>
@@ -61,7 +60,8 @@ export default function RoadsideService() {
               </p>
             </div>
 
-            <p className="text-copy text-sm leading-relaxed">
+            {/* Description — explicit text-sm text-copy, no hidden classes */}
+            <p className="text-zinc-300 text-sm leading-relaxed">
               We come to you — roadside, at a yard, or a job site in the Dallas area.
               Call us and we'll dispatch a technician to your location.
             </p>

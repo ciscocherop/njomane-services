@@ -15,17 +15,7 @@ export default function WhyChooseUs() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-          {/* Right on desktop — photo panel (mirrors Who We Are) */}
-          <div className="lg:order-2">
-            <PhotoPanel
-              src="/IMG-20260921-WA0033.jpg"
-              alt="Trailer axle assembly ready for installation in the Njomane Services shop"
-              title="Njomane Services LLC"
-              subtitle="Truck Mechanic · Dallas, TX"
-            />
-          </div>
-
-          {/* Left on desktop — content */}
+          {/* Content — first in DOM so it shows first on mobile */}
           <div className="lg:order-1 flex flex-col gap-4 lg:pr-4">
             <div>
               <span className="text-zinc-400 text-xs font-semibold tracking-[0.18em] uppercase">Why Njomane</span>
@@ -58,6 +48,16 @@ export default function WhyChooseUs() {
                 <ArrowRight size={14} aria-hidden="true" />
               </a>
             </div>
+          </div>
+
+          {/* Photo — second in DOM, pushed right on desktop */}
+          <div className="lg:order-2">
+            <PhotoPanel
+              src="/IMG-20260921-WA0033.jpg"
+              alt="Trailer axle assembly ready for installation in the Njomane Services shop"
+              title="Njomane Services LLC"
+              subtitle="Truck Mechanic · Dallas, TX"
+            />
           </div>
         </div>
       </div>
