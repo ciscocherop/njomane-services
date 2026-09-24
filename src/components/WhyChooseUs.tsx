@@ -15,14 +15,14 @@ export default function WhyChooseUs() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-          {/* Content — first in DOM so it shows first on mobile */}
-          <div className="lg:order-1 flex flex-col gap-4 lg:pr-4">
+          {/* Content — always first: left on desktop, top on mobile */}
+          <div className="flex flex-col gap-4 lg:pr-4">
             <div>
               <span className="text-zinc-400 text-xs font-semibold tracking-[0.18em] uppercase">Why Njomane</span>
               <h2 className="mt-2 text-4xl sm:text-5xl font-black text-white uppercase tracking-tight">
                 Fast. Reliable. Professional.
               </h2>
-              <p className="mt-2 text-copy text-sm max-w-xl">
+              <p className="mt-2 text-zinc-300 text-sm max-w-xl leading-relaxed">
                 We keep your business moving — with the skills, equipment and commitment to get the job done right.
               </p>
               <div className="mt-3 w-10 h-0.5 bg-zinc-600 rounded-full" aria-hidden="true" />
@@ -50,8 +50,8 @@ export default function WhyChooseUs() {
             </div>
           </div>
 
-          {/* Photo — second in DOM, pushed right on desktop */}
-          <div className="lg:order-2">
+          {/* Photo — always second: right on desktop, bottom on mobile */}
+          <div>
             <PhotoPanel
               src="/IMG-20260921-WA0033.jpg"
               alt="Trailer axle assembly ready for installation in the Njomane Services shop"
